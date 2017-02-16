@@ -1,0 +1,38 @@
+package com.xfhy.contentprovider;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		
+		
+		
+	}
+
+	public void onclick(View v){
+ContentResolver contentResolver = this.getContentResolver();
+		
+		Uri uri = Uri.parse("content://com.itheima.provider/info/1");
+		Cursor cursor = contentResolver.query(uri, new String[]{"name","money"}, null, null, null);
+		if(cursor.moveToFirst()){
+			do {
+				String name = cursor.getString(cursor.getColumnIndex("name"));
+				String money = cursor.getString(cursor.getColumnIndex("money"));
+				
+				Log.d("xfhy", "程序二:   name:"+name+"   money:"+money);
+			} while (cursor.moveToNext());
+		}
+	}
+
+}

@@ -1,0 +1,43 @@
+package com.itheima.registerbroadcast.service;
+
+import com.itheima.registerbroadcast.receiver.ScreenReceiver;
+
+import android.app.Service;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.IBinder;
+
+/**
+ * @author  XFHY
+ * @date  2017年1月30日 上午10:27:01
+ * @package com.itheima.registerbroadcast.service
+ * @function 这是服务   用于开启监听屏幕状态的广播   这种广播非常频繁,属于特殊的广播,所有在清单文件中注册了也没用
+ * 需要在代码中动态的注册
+ */
+public class ScreenService extends Service {
+
+	
+	
+	private ScreenReceiver screenReceiver;
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+	@Override
+	public void onCreate() {
+		
+		screenReceiver = new ScreenReceiver();
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("android.intent.action.SCREEN_OFF");
+		intentFilter.addAction("android.intent.action.SCREEN_ON");
+		
+		registerReceiver(screenReceiver, intentFilter);
+		
+		super.onCreate();
+	}
+	
+	
+	
+}

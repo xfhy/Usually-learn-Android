@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+F:\eclipse集成开发环境\WorkSpace\fragment_碎片\.metadata\.plugins\org.eclipse.jdt.core

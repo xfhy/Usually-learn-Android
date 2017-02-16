@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+F:\eclipse集成开发环境\WorkSpace\ContentProvider 内容提供者\.metadata\.plugins\org.eclipse.jdt.core

@@ -1,0 +1,32 @@
+package com.itheima.timer1;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		//1. 初始化Timer
+		Timer timer = new Timer();
+		TimerTask timerTask = new TimerTask() {
+			
+			//这是运行在子线程
+			@Override
+			public void run() {
+				Log.d("xfhy", "哈哈,我被执行啦");
+			}
+		};
+		timer.schedule(timerTask, 5000);    //运行后5秒后执行
+		
+	}
+
+
+}

@@ -1,0 +1,52 @@
+package com.itheima.wx;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+
+import com.itheima.life.R;
+
+public class WxFragment extends Fragment {
+
+	//依附在Activity上
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		Log.d("xfhy", "onCreate");
+		super.onCreate(savedInstanceState);
+	}
+	
+	//fragment加载一个布局,显示Fragment的内容
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_wx, null);
+		view.findViewById(R.id.btn_test).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				System.out.println("哈哈哈 我被点击了");
+			}
+		});
+		
+		return view; 
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		Log.d("xfhy", "onActivityCreated");
+		super.onActivityCreated(savedInstanceState);
+	}
+	
+	
+	
+}

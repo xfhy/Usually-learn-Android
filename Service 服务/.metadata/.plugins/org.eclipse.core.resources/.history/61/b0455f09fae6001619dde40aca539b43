@@ -1,0 +1,14 @@
+package com.itheima.baidumusic;
+/**
+ * @author  XFHY
+ * @date  2017年1月30日 下午10:36:44
+ * @package com.itheima.baidumusic
+ * @function 
+ */
+public interface Iservice {
+	
+	public void callPlayMusic();
+	public void callPauseMusic();
+	public void callReMusic()
+	
+}

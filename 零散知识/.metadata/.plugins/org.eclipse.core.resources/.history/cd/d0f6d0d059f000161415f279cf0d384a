@@ -1,0 +1,54 @@
+package com.itheima.menutest;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// 1. 加载菜单
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	//想要知道具体点击的是哪个菜单条目,需要重写此方法
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.action_add:
+			Toast.makeText(getApplicationContext(), "add", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.action_settings:
+			Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
+			break;
+		default:
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	//当点击menu按键的时候会执行这个方法
+	@Override
+	public boolean onMenuOpened(int featureId, Menu menu) {
+		
+		AlertDialog.Builder builder = new Builder(this);
+		
+		return super.onMenuOpened(featureId, menu);
+	}
+	
+}

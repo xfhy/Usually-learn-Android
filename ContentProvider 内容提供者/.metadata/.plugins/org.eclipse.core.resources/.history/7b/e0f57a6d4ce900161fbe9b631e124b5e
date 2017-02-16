@@ -1,0 +1,10 @@
+package com.itheima.smsbackup;
+/**
+ * @author  XFHY
+ * @date  2017年2月2日 下午9:34:00
+ * @package com.itheima.smsbackup
+ * @function 
+ */
+public class KXmlSerializer {
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;service&apos; in &apos;com.itheima.whybindservice.MainActivity&apos; to &apos;binder&apos;&#x0D;&#x0A;- Original project: &apos;6.通过接口调用服务里面的方法&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.whybindservice.MainActivity.service&apos;&#x0D;&#x0A;- Renamed element: &apos;com.itheima.whybindservice.MainActivity.binder&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;service&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;com.itheima.whybindservice{MainActivity.java[MainActivity^service" name="binder" references="true" setter="false" stamp="1485783237807" textual="false" version="1.0"/>
+</session>

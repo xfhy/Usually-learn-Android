@@ -1,0 +1,147 @@
+package com.itheima.baidumusic;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Service;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.IBinder;
+import android.os.Message;
+import android.widget.Toast;
+
+/**
+ * @author XFHY
+ * @date 2017年1月30日 下午10:35:30
+ * @package com.itheima.baidumusic
+ * @function
+ */
+public class MusicService extends Service {
+
+	private MediaPlayer mediaPlayer;
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return new MyBinder();
+	}
+
+	@Override
+	public void onCreate() {
+		// 1.初始化MediaPlayer对象
+		mediaPlayer = new MediaPlayer();
+		super.onCreate();
+	}
+
+	/**
+	 * 播放音乐
+	 */
+	private void playMusic() {
+		try {
+			
+			mediaPlayer.reset();
+			
+			// 2. 设置播放资源  可以是本地 也可以是网络
+			mediaPlayer.setDataSource(Environment.getExternalStorageDirectory()
+					+ "/ido.mp3");
+			// 3. 准备播放
+			mediaPlayer.prepare();
+
+			//4. 开始播放
+			mediaPlayer.start();
+			
+			//5. 更新进度条的UI
+			updateSeekBar();
+			
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		Toast.makeText(getApplicationContext(), "播放音乐", Toast.LENGTH_SHORT)
+				.show();
+	}
+
+	/**
+	 * 更新进度条的进度
+	 */
+	private void updateSeekBar() {
+		//6. 获取音乐文件的总时长  Gets the duration of the file.
+		final int duration = mediaPlayer.getDuration();
+		//7. 构造定时器
+		Timer timer = new Timer();
+		//7.1 创建任务  
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				
+				//8. 获取歌曲的当前进度
+				int currentPosition = mediaPlayer.getCurrentPosition();
+				
+				//9. 通过handler发送歌曲的信息到Activity更新UI
+				//9.1 通过将数据封装到Message中
+				Message msg = new Message();
+				//9.2 封装多条数据到Message中     将那些数据封装到Bundle中,其实Bundle就是Map
+				Bundle bundle = new Bundle();
+				bundle.putInt("duration", duration);
+				bundle.putInt("currentPosition", currentPosition);
+				msg.setData(bundle);
+				MainActivity.handler.sendMessage(msg);
+				
+			}
+		};
+		//7.2 300毫秒后 每隔1秒执行一次任务
+		timer.schedule(timerTask, 300, 1000);   //每隔1秒获取歌曲的进度
+		
+	}
+
+	/**
+	 * 暂停音乐
+	 */
+	private void pauseMusic() {
+		mediaPlayer.pause();
+		Toast.makeText(getApplicationContext(), "暂停音乐", Toast.LENGTH_SHORT)
+				.show();
+	}
+
+	/**
+	 * 继续播放
+	 */
+	private void reMusic() {
+		mediaPlayer.start();
+		Toast.makeText(getApplicationContext(), "继续播放", Toast.LENGTH_SHORT)
+				.show();
+	}
+
+	// 中间人对象 借助这个对象 可以在Activity中调用服务里面的方法
+	private class MyBinder extends Binder implements Iservice {
+
+		public void callPlayMusic() {
+			playMusic();
+		}
+
+		public void callPauseMusic() {
+			pauseMusic();
+		}
+
+		public void callReMusic() {
+			reMusic();
+		}
+
+	}
+
+}

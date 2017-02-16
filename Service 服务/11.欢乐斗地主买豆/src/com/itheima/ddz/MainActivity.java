@@ -1,0 +1,86 @@
+package com.itheima.ddz;
+
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.itheima.alipay.Iservice;
+import com.itheima.alipay.Iservice.Stub;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private Button bt_pay;
+	private MyConn conn;
+	private Iservice iservice;
+	private Context mContext;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		mContext = this;
+		
+		bt_pay = (Button) findViewById(R.id.bt_pay);
+		bt_pay.setOnClickListener(this);
+		
+		Intent intent = new Intent();
+		intent.setAction("com.itheima.pay");
+		
+		conn = new MyConn();
+		
+		//绑定服务
+		bindService(intent, conn, BIND_AUTO_CREATE);
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		boolean result = false;
+		try {
+			result = iservice.callPay("abc", "123", 465);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(result){
+			Toast.makeText(mContext, "购买欢乐豆成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(mContext, "购买欢乐豆失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+
+	//监听服务的状态
+	class MyConn implements ServiceConnection{
+
+		
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			//获取中间人对象
+			iservice = Stub.asInterface(service);
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			
+		}
+		
+	}
+	
+	@Override
+	protected void onDestroy() {
+		//解绑服务
+		unbindService(conn);
+		super.onDestroy();
+	}
+	
+}

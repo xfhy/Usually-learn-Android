@@ -1,0 +1,42 @@
+package com.itheima.provider;
+
+import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.util.Log;
+import com.itheima.provider.R;
+
+public class MainActivity extends Activity {
+
+	private Context mContext;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		mContext = this;
+		
+		//获取帮助类
+		MySqliteOpenHelper sqliteOpenHelper = new MySqliteOpenHelper(mContext);
+		SQLiteDatabase sqLiteDatabase = sqliteOpenHelper.getReadableDatabase();
+		
+		//查询数据
+		Cursor cursor = sqLiteDatabase.query("info", null, null, null, null, null, null);
+		//判断返回的是否为空
+		if(cursor.moveToFirst()){
+			do{
+				int id = cursor.getInt(cursor.getColumnIndex("_id"));
+				String name = cursor.getString(cursor.getColumnIndex("name"));
+				String money = cursor.getString(cursor.getColumnIndex("money"));
+				
+				Log.d("xfhy", "id:"+id+"  name:"+name+"  money:"+money);
+			}while(cursor.moveToNext());   //移动到下一行
+		}
+		
+		cursor.close();
+		
+	}
+
+}

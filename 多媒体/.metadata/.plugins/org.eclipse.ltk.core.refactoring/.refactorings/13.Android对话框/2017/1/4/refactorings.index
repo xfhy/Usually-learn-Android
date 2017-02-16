@@ -1,0 +1,4 @@
+1485594371435	Convert local variable 'bt_plain' to field
+1485594375043	Convert local variable 'bt_sinsec' to field
+1485594377392	Convert local variable 'bt_multsec' to field
+1485594380572	Convert local variable 'bt_progress' to field

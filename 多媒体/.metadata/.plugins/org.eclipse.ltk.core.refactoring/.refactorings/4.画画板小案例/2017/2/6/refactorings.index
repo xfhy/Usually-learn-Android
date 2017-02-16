@@ -1,0 +1,8 @@
+1486601058016	Convert local variable 'iv_img' to field
+1486601160887	Rename local variable 'srcbitmap'
+1486601815913	Convert local variable 'copyBitmap' to field
+1486601824804	Convert local variable 'canvas' to field
+1486601830999	Convert local variable 'paint' to field
+1486604688073	Convert local variable 'bt_change_color' to field
+1486604690381	Convert local variable 'bt_change_big' to field
+1486604693906	Convert local variable 'bt_save' to field

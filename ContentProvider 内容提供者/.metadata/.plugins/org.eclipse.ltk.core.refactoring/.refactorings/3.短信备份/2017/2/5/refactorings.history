@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;smsBean&apos; in &apos;com.itheima.smsbackup.utils.SmsUtils.backupSms(...)&apos; to &apos;sms&apos;&#x0D;&#x0A;- Original project: &apos;3.短信备份&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.smsbackup.utils.SmsUtils.backupSms(Context, List&lt;Sms&gt;).smsBean&apos;&#x0D;&#x0A;- Renamed element: &apos;smsBean&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;smsBean&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.itheima.smsbackup.utils{SmsUtils.java[SmsUtils~backupSms~QContext;~QList\&lt;QSms;&gt;;@smsBean!1372!1391!1376!1382!QSms;!0!false" name="sms" references="true" stamp="1486028916670" version="1.0"/>
+</session>

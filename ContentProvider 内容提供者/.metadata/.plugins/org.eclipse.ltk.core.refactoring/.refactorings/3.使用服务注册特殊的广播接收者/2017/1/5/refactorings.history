@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.itheima.registerbroadcast.service.ScreenService.onCreate().screenReceiver&apos; in &apos;com.itheima.registerbroadcast.service.ScreenService.onCreate()&apos; to field&#x0D;&#x0A;- Original project: &apos;3.使用服务注册特殊的广播接收者&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.registerbroadcast.service.ScreenService.onCreate().screenReceiver&apos;&#x0D;&#x0A;- Field name: &apos;screenReceiver&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;screenReceiver&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.itheima.registerbroadcast.service{ScreenService.java" name="screenReceiver" selection="630 37" stamp="1485743624144" static="false" version="1.0" visibility="2"/>
+</session>

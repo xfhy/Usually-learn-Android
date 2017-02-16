@@ -1,0 +1,5 @@
+1486012409770	Convert local variable 'bt_query' to field
+1486012413184	Convert local variable 'bt_insert' to field
+1486012415613	Convert local variable 'bt_delete' to field
+1486012418281	Convert local variable 'bt_update' to field
+1486016697937	Convert local variable 'contentResolver' to field

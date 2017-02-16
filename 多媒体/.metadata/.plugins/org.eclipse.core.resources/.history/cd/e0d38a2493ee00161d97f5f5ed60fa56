@@ -1,0 +1,30 @@
+package com.itheima.timer1;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		Timer timer = new Timer();
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				Log.d("xfhy", "哈哈,我被执行了");
+			}
+		};
+		timer.schedule(timerTask, delay);
+		
+	}
+
+
+}

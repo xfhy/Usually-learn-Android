@@ -1,0 +1,3 @@
+1486611562138	Rename package 'com.dadas'
+1486611729681	Convert local variable 'iv_img' to field
+1486612148234	Convert local variable 'copyBitmap' to field

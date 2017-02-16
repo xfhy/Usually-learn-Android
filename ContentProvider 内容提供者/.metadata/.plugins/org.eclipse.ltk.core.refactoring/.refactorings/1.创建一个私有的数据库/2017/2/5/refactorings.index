@@ -1,0 +1,2 @@
+1485949870792	Convert local variable 'sqliteOpenHelper' to field
+1485951946496	Rename package 'com.itheima.db'

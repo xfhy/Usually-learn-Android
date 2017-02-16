@@ -1,0 +1,53 @@
+package com.itheima.asynaddfragment;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// 1. 获取手机的宽和高
+		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+		Point outSize = new Point();
+		wm.getDefaultDisplay().getSize(outSize);
+		int width = outSize.x; // 宽
+		int height = outSize.y; // 高
+		
+		//3. 获取FragmentManager实例
+		FragmentManager fragmentManager = getFragmentManager();
+		//3.1 开启事务    要么同时成功    要么同时失败
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+		
+		// 2. 判断手机横竖屏
+		if (height > width) { // 高度>宽度
+			// 说明是竖屏
+			Log.d("xfhy", "竖屏");
+			
+			//3.2 添加fragment
+			FirstFragment firstFragment = new FirstFragment();
+			transaction.add(android.R.id.content, firstFragment);
+			
+		} else {
+			// 说明是横屏
+			Log.d("xfhy", "横屏");
+			
+			//3.2 添加fragment
+			SecondFragment secondFragment = new SecondFragment();
+			transaction.add(android.R.id.content, frasecondFragmentgment);
+		}
+
+		//4. 最后一定要记得  提交
+		transaction.commit();
+		
+	}
+
+}

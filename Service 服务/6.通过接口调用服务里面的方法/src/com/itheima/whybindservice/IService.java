@@ -1,0 +1,13 @@
+package com.itheima.whybindservice;
+/**
+ * @author  XFHY
+ * @date  2017年1月30日 下午9:17:47
+ * @package com.itheima.whybindservice
+ * @function 
+ */
+public interface IService {
+
+	public void callbanzheng(int money);
+	public void callDaMaJiang();
+	
+}

@@ -1,0 +1,38 @@
+package com.itheima.videoview;
+
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
+import io.vov.vitamio.widget.VideoView;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Environment;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// [1]插件vitamio框架检查是否可用
+		if (!LibsChecker.checkVitamioLibs(this)) {
+			return;
+		}
+
+		VideoView vv_video = (VideoView) findViewById(R.id.vv_video);
+
+		vv_video.setVideoPath(Environment.getExternalStorageDirectory()
+				.getPath() + "/cc.MP4");
+		vv_video.setOnPreparedListener(new OnPreparedListener() {
+
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				vv_video.start();
+			}
+		});
+		vv_video.start();
+
+	}
+
+}

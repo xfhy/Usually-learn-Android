@@ -1,0 +1,6 @@
+1485660813544	Convert local variable 'bt_start' to field
+1485660835424	Convert local variable 'bt_stop' to field
+1485745269338	Delete element
+1485745408252	Convert local variable 'bt_bind' to field
+1485745412580	Convert local variable 'bt_unbind' to field
+1485745716991	Convert local variable 'myConn' to field

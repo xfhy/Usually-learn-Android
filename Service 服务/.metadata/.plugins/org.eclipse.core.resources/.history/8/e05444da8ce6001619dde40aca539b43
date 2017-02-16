@@ -1,0 +1,150 @@
+package com.itheima.phoneservice;
+
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaRecorder;
+import android.os.Environment;
+import android.os.IBinder;
+import android.os.SystemClock;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
+
+/**
+ * @author XFHY
+ * @date 2017年1月29日 下午5:27:30
+ * @package com.itheima.phoneservice
+ * @function
+ */
+public class PhoneService extends Service {
+
+	private MyPhoneStateListener phoneStateListener;
+	private TelephonyManager telephonyManager;
+	private MediaRecorder mediaRecorder;
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
+
+	@Override
+	public void onCreate() {
+		Toast.makeText(getApplicationContext(), "开始监听", Toast.LENGTH_SHORT).show();
+		
+		Log.d("xfhy", "服务 onCreate");
+		
+		//1.获取TelephonyManager实例
+		telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		
+		//2.创建PhoneStateListener实例
+		phoneStateListener = new MyPhoneStateListener();
+		
+		//3.注册一个电话状态的监听器    
+		telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+		
+		super.onCreate();
+	}
+
+	//监听电话的状态
+	class MyPhoneStateListener extends PhoneStateListener{
+		
+		//当打电话的状态发生改变时调用
+		@Override
+		public void onCallStateChanged(int state, String incomingNumber) {
+			//4.判断电话号码是否为空
+			if(!TextUtils.isEmpty(incomingNumber)){
+				Log.d("xfhy", "接到: "+incomingNumber+" 的电话");
+			}
+			
+			//5.判断当前的状态
+			switch (state) {
+			case TelephonyManager.CALL_STATE_IDLE:   //空闲状态
+				if(mediaRecorder != null){
+					//8.停止录音
+					mediaRecorder.stop();     
+					//9.重置
+					mediaRecorder.reset();
+					//10.释放资源
+					mediaRecorder.release(); 
+				}
+				break;
+			case TelephonyManager.CALL_STATE_OFFHOOK: //通话中
+				Log.d("xfhy", "录音ing");
+				record();
+				break;
+			case TelephonyManager.CALL_STATE_RINGING: //响铃状态
+				Log.d("xfhy", "创建一个收音机,准备开始录音");
+				prepare();
+				break;
+			default:
+				break;
+			}
+			
+			super.onCallStateChanged(state, incomingNumber);
+		}
+	}
+	
+	/**
+	 * 准备录音
+	 */
+	private void prepare(){
+		//1.实例化MediaRecorder对象
+		mediaRecorder = new MediaRecorder();
+		//2.设置音频来源   VOICE_CALL:双方通话的声音都能录
+		mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
+		//3.设置录音的文件的输出格式
+		mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+		
+		//4.设置输出文件的路径名称
+		FileOutputStream fileOutputStream = null;
+		try {
+			/*fileOutputStream = new FileOutputStream(
+					Environment.getExternalStorageDirectory() + "/"
+							+ SystemClock.currentThreadTimeMillis() + ".3gp");
+			FileDescriptor fileDescriptor = fileOutputStream.getFD(); // Returns
+																		// the
+																		// underlying
+																		// file
+																		// descriptor.
+*/			mediaRecorder.setOutputFile(Environment.getExternalStorageDirectory() + "/"
+					+ SystemClock.currentThreadTimeMillis() + ".3gp");
+			
+			//5.设置音频文件的编码方式
+			mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+			
+			//6.准备录音
+			mediaRecorder.prepare();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * 录音
+	 */
+	private void record(){
+		//7.开始录音
+		mediaRecorder.start();
+	}
+	
+	@Override
+	public void onDestroy() {
+		Log.d("xfhy", "服务 onDestroy");
+		//取消注册 电话状态的监听
+		telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
+		super.onDestroy();
+	}
+	
+}

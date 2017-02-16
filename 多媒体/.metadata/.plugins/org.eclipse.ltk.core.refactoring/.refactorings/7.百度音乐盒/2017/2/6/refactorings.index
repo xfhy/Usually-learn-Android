@@ -1,0 +1,4 @@
+1486621485578	Convert local variable 'mediaPlayer' to field
+1486623730684	Convert local variable 'sb_seekm' to field
+1486627289223	Convert local variable 'tv_current_time' to field
+1486627292267	Convert local variable 'tv_duration_time' to field

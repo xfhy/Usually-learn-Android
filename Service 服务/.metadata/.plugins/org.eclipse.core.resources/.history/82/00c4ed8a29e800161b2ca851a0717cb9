@@ -1,0 +1,21 @@
+package com.itheima.remoteservice;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
+/**
+ * @author  XFHY
+ * @date  2017年2月1日 上午10:52:56
+ * @package com.itheima.remoteservice
+ * @function 
+ */
+public class RemoteService extends Service {
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

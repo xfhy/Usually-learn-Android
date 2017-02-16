@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">8.xml文件的生成与解析</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="backup_sms">备份</string>
+    <string name="restore_sms">恢复</string>
+
+</resources>

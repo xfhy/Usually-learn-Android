@@ -1,0 +1,9 @@
+1485687957726	Convert local variable 'conn' to field
+1485687968021	Convert local variable 'is' to field
+1485687971240	Convert local variable 'bis' to field
+1485687975973	Convert local variable 'isr' to field
+1485687979142	Convert local variable 'br' to field
+1485688129248	Convert local variable 'url' to field
+1485688169195	Convert local variable 'openConnection' to field
+1485697886112	Rename compilation unit 'Test.java'
+1485698097503	Rename compilation unit 'Urls.java'

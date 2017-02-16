@@ -1,0 +1,77 @@
+package com.itheima.smsbackup;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.itheima.smsbackup.bean.Sms;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private Context mContext;
+	
+	private List<Sms> allSms = new ArrayList<>();
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		mContext = this;
+
+		
+		Button bt_backup = (Button) findViewById(R.id.bt_backup);
+		bt_backup.setOnClickListener(this);
+	}
+
+	/**
+	 * 短信备份  备份成xml文件
+	 */
+	private void smsBackup() {
+		ContentResolver contentResolver = mContext.getContentResolver();
+		//1.构造uri   查询所有的短信   Android规定是以 content://  开头
+		Uri uri = Uri.parse("content://sms/");
+		//2.查询系统里面的短信
+		Cursor cursor = contentResolver.query(uri, new String[]{"address","date","read","body"}, null, null, null);
+		if(cursor != null && cursor.moveToFirst()){
+			do {
+				//
+				String address = cursor.getString(cursor.getColumnIndex("address"));
+				int date = cursor.getInt(cursor.getColumnIndex("date"));
+				int read = cursor.getInt(cursor.getColumnIndex("read"));
+				String body = cursor.getString(cursor.getColumnIndex("body"));
+				
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String receiveDate = simpleDateFormat.format(new Date(date));
+				
+				
+				
+				Log.d("xfhy", "");
+				
+			} while (cursor.moveToNext());
+		}
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_backup:
+			smsBackup();
+			break;
+		default:
+			break;
+		}
+	}
+
+}

@@ -1,0 +1,8 @@
+1485180056565	Convert local variable 'et_number' to field
+1485180059940	Convert local variable 'bt_addcontact' to field
+1485180062207	Convert local variable 'et_sms_content' to field
+1485180064134	Convert local variable 'bt_sendsms' to field
+1485180220156	Convert local variable 'lv_contact' to field
+1485180521207	Rename field 'contacts'
+1485216630245	Convert local variable 'lv_sms_templet' to field
+1485217214483	Convert local variable 'bt_sms_templet' to field

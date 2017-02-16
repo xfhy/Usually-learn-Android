@@ -1,0 +1,51 @@
+package com.itheima.playmusic;
+
+import android.app.Activity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+
+import com.itheima.playvideo.R;
+
+public class MainActivity extends Activity {
+
+	private MediaPlayer mediaPlayer;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		SurfaceView sv_video = (SurfaceView) findViewById(R.id.sv_video);
+
+		// 设置视频播放内容的SurfaceHolder 是用来维护视频播放的内容
+		SurfaceHolder holder = sv_video.getHolder();
+		// 为此持有者添加回调接口。 有多个回调接口与持有者相关联。
+		holder.addCallback(new Callback() {
+			
+			//当Surface被销毁  则立即调用此方法
+			@Override
+			public void surfaceDestroyed(SurfaceHolder holder) {
+				
+			}
+			
+			//当
+			@Override
+			public void surfaceCreated(SurfaceHolder holder) {
+				
+			}
+			
+			@Override
+			public void surfaceChanged(SurfaceHolder holder, int format, int width,
+					int height) {
+				
+			}
+		});
+
+	}
+
+}

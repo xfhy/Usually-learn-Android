@@ -1,0 +1,33 @@
+package com.itheima.videoview;
+
+import io.vov.vitamio.LibsChecker;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Environment;
+import android.widget.VideoView;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		// [1]插件vitamio框架检查是否可用
+		if (!LibsChecker.checkVitamioLibs(this)) {
+			return;
+		}
+
+		VideoView vv_video = (VideoView) findViewById(R.id.vv_video);
+
+		try {
+			vv_video.setVideoPath(Environment.getExternalStorageDirectory()
+					.getPath() + "/cc.MP4");
+			vv_video.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

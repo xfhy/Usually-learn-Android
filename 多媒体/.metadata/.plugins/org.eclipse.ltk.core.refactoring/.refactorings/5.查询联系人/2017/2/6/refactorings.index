@@ -1,0 +1,3 @@
+1486283023701	Convert local variable 'bt_query' to field
+1486283299421	Convert local variable 'contentResolver' to field
+1486287943919	Rename local variable 'contacts'

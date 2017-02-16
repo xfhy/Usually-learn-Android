@@ -1,0 +1,37 @@
+package com.itheima.communication;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.os.Build;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		//1. 获取Fragment管理者
+		FragmentManager fragmentManager = getFragmentManager();
+		//2.开启事务
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+		
+		//3. 动态替换
+		FirstFragment firstFragment = new FirstFragment();
+		SecondFragment secondFragment = new SecondFragment();
+		transaction.replace(R.id.ll_left, firstFragment );
+		transaction.replace(R.id.ll_right, secondFragment);
+		
+		transaction.commit();
+	}
+
+}

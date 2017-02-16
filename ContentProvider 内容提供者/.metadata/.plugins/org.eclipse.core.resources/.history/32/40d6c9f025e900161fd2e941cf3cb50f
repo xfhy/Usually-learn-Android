@@ -1,0 +1,12 @@
+package com.itheima.smsbackup.bean;
+/**
+ * @author  XFHY
+ * @date  2017年2月2日 下午4:58:41
+ * @package com.itheima.smsbackup.bean
+ * @function 短信   模型
+ */
+public class Sms {
+
+	
+	
+}

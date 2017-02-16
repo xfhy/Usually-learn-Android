@@ -1,0 +1,8 @@
+1484381617356	Extracts string '请输入用户名' into R.string.input_username
+1484381740461	Extracts string '请输入密码' into R.string.input_password
+1484381871090	Extracts string '记住密码' into R.string.cb_reme
+1484381926487	Extracts string '登录' into R.string.btn_login
+1484383602050	Convert local variable 'et_username' to field
+1484383606769	Convert local variable 'et_password' to field
+1484383611485	Convert local variable 'cb_reme' to field
+1484383614549	Convert local variable 'btn_login' to field

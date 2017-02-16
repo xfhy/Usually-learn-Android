@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;bitmap&apos; in &apos;com.itheima.copybitmap.MainActivity.onCreate(...)&apos; to &apos;srcBitmap&apos;&#x0D;&#x0A;- Original project: &apos;2.创建原图的副本&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.copybitmap.MainActivity.onCreate(Bundle).bitmap&apos;&#x0D;&#x0A;- Renamed element: &apos;bitmap&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;bitmap&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.itheima.copybitmap{MainActivity.java[MainActivity~onCreate~QBundle;@bitmap!907!986!914!919!QBitmap;!0!false" name="srcBitmap" references="true" stamp="1486564240923" version="1.0"/>
+</session>

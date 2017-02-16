@@ -1,0 +1,24 @@
+package com.itheima.querycontacts;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.itheima.querycontacts.bean.Contact;
+
+/**
+ * @author  XFHY
+ * @date  2017年2月5日 下午5:34:18
+ * @package com.itheima.querycontacts
+ * @function 联系人操作工具类
+ */
+public class QueryContactUtils {
+
+	public static List<Contact> getAllContacts(){
+		List<Contact> contacts = new ArrayList<>();
+		
+		
+		
+		return contacts;
+	}
+	
+}

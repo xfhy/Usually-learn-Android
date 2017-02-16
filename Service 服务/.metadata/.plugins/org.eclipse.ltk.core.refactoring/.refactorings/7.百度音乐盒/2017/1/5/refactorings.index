@@ -1,0 +1,4 @@
+1485786661167	Convert local variable 'bt_play' to field
+1485786664724	Convert local variable 'bt_pause' to field
+1485786667533	Convert local variable 'bt_re' to field
+1485787395104	Convert local variable 'myConn' to field

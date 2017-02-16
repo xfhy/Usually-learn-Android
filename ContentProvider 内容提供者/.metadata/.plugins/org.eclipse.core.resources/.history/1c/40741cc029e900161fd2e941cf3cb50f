@@ -1,0 +1,86 @@
+package com.itheima.smsbackup;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+import com.itheima.smsbackup.bean.Sms;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private Context mContext;
+	
+	private List<Sms> allSms = new ArrayList<>();
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		mContext = this;
+
+		
+		Button bt_backup = (Button) findViewById(R.id.bt_backup);
+		bt_backup.setOnClickListener(this);
+	}
+
+	/**
+	 * 短信备份  备份成xml文件
+	 */
+	private void smsBackup() {
+		ContentResolver contentResolver = mContext.getContentResolver();
+		//1.构造uri   查询所有的短信   Android规定是以 content://  开头
+		Uri uri = Uri.parse("content://sms/");
+		//2.查询短信应用里面的数据库
+		Cursor cursor = contentResolver.query(uri, new String[]{"address","date","read","body"}, null, null, null);
+		//3.判断是否拿到了
+		if(cursor != null && cursor.moveToFirst()){
+			do {
+				//4.获取其短信内容
+				String address = cursor.getString(cursor.getColumnIndex("address"));
+				long date = cursor.getLong(cursor.getColumnIndex("date"));  //时间是long类型的
+				int read = cursor.getInt(cursor.getColumnIndex("read"));
+				String body = cursor.getString(cursor.getColumnIndex("body"));
+				
+				//格式化时间
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
+				String receiveDate = simpleDateFormat.format(new Date(date));
+				
+				//5.封装短信内容到bean对象中   并将该bean对象添加到List集合中
+				Sms sms = new Sms();
+				sms.setAddress(address);
+				sms.setBody(body);
+				sms.setDate(receiveDate);
+				sms.setRead(read);
+				allSms.add(sms);
+				
+				Log.d("xfhy", sms.toString());
+				
+			} while (cursor.moveToNext());
+		}
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_backup:
+			smsBackup();
+			break;
+		default:
+			break;
+		}
+	}
+
+}

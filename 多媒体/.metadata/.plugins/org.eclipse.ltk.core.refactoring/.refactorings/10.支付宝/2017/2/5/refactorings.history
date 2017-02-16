@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Iservice.aidl&apos; to &apos;11.欢乐斗地主买豆/src/com.itheima.alipay&apos;&#x0D;&#x0A;- Original project: &apos;10.支付宝&apos;&#x0D;&#x0A;- Destination element: &apos;11.欢乐斗地主买豆/src/com.itheima.alipay&apos;&#x0D;&#x0A;- Original element: &apos;Iservice.aidl&apos;" description="Copy file" destination="=11.欢乐斗地主买豆/src&lt;com.itheima.alipay" element1="src/com/itheima/alipay/Iservice.aidl" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1485927844724" units="0" version="1.0"/>
+</session>

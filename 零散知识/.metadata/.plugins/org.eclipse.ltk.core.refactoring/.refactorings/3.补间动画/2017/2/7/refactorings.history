@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.itheima.tweenanim.MainActivity.onCreate().iv_img&apos; in &apos;com.itheima.tweenanim.MainActivity.onCreate()&apos; to field&#x0D;&#x0A;- Original project: &apos;3.补间动画&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.tweenanim.MainActivity.onCreate().iv_img&apos;&#x0D;&#x0A;- Field name: &apos;iv_img&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;iv_img&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.itheima.tweenanim{MainActivity.java" name="iv_img" selection="1036 46" stamp="1486867134107" static="false" version="1.0" visibility="2"/>
+</session>

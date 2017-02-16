@@ -1,0 +1,29 @@
+package com.itheima.registerbroadcast.receiver;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+/**
+ * @author XFHY
+ * @date 2017年1月30日 上午10:28:43
+ * @package com.itheima.registerbroadcast.receiver
+ * @function 这个广播用于监听屏幕的状态 解锁 锁屏
+ */
+public class ScreenReceiver extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		// 1.获取广播的类型
+		String action = intent.getAction();
+
+		if (action.equals("android.intent.action.SCREEN_OFF")) {
+			Log.d("xfhy", "屏幕已关闭");
+		} else if (action.equals("android.intent.action.SCREEN_ON")) {
+			Log.d("xfhy", "屏幕已打开");
+		}
+
+	}
+
+}

@@ -1,0 +1,52 @@
+package com.itheima.loadbigimg;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private Button bt_loadimg;
+	private ImageView iv_img;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		bt_loadimg = (Button) findViewById(R.id.bt_loadimg);
+		iv_img = (ImageView) findViewById(R.id.iv_img);
+		
+		bt_loadimg.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		
+		//1.获取屏幕的分辨率  宽和高
+		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		Point point = new Point();
+		wm.getDefaultDisplay().getSize(point);   //获取屏幕的大小 并将信息放到point里面
+		int screenWidth = point.x;
+		int screenHeight = point.y;
+		
+		Options option = new Options();
+		//根据路径加载图片  将图片转换成bitmap
+		Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/dog.jpg",option);
+		
+		//设置图片
+		iv_img.setImageBitmap(bitmap);    //这里这张图片太大了,可能会造成OutOfMemoryError异常 ,没有压缩
+	}
+
+
+}

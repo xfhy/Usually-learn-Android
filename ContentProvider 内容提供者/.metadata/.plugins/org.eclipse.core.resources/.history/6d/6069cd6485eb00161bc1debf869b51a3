@@ -1,0 +1,53 @@
+package com.itheima.querycontacts;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class MainActivity extends Activity implements OnClickListener {
+
+	private Button bt_query;
+	private Context mContext;
+	private ContentResolver contentResolver;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		mContext = this;
+
+		bt_query = (Button) findViewById(R.id.bt_query);
+
+		bt_query.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		contentResolver = mContext.getContentResolver();
+
+		// 1.获取uri com.android.contacts是ContactsProvider2的authorities属性
+		// raw_contacts是表名
+		Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
+		Uri dataUri = Uri.parse("content://com.android.contacts/data");
+		// 先查询raw_contacts表的contact_id列,就知道有几条联系人
+		Cursor cursor = contentResolver.query(uri,
+				new String[] { "contact_id" }, null, null, null);
+		if (cursor != null && cursor.moveToFirst()) {
+			do {
+				String contact_id = cursor.getString(cursor.getColumnIndex("contact_id"));
+				
+				
+				
+				Log.d("xfhy", "contact_id: "+contact_id);
+			} while (cursor.moveToNext());
+		}
+	}
+
+}

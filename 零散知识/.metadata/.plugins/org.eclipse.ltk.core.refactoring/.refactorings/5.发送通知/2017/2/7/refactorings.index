@@ -1,0 +1,4 @@
+1486889243976	Convert local variable 'bt_send' to field
+1486889246132	Convert local variable 'bt_close' to field
+1486889691864	Convert local variable 'systemService' to field
+1486890338175	Rename field 'systemService'

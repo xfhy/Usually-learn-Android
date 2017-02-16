@@ -1,0 +1,12 @@
+package com.itheima.querycontacts.bean;
+/**
+ * @author  XFHY
+ * @date  2017年2月5日 下午5:31:42
+ * @package com.itheima.querycontacts.bean
+ * @function 联系人  模型
+ */
+public class Contact {
+
+	private 
+	
+}

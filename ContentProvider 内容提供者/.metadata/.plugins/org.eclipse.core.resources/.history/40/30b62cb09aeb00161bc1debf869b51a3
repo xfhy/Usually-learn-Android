@@ -1,0 +1,64 @@
+package com.itheima.querycontacts.bean;
+
+import java.util.Comparator;
+
+/**
+ * @author XFHY
+ * @date 2017年2月5日 下午5:31:42
+ * @package com.itheima.querycontacts.bean
+ * @function 联系人 模型
+ */
+public class Contact implements Comparator<Contact>{
+
+	private String id;
+	private String name;
+	private String phone;
+	private String email;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", phone=" + phone
+				+ ", email=" + email + "]";
+	}
+
+	@Override
+	public int compare(Contact lhs, Contact rhs) {
+		/*
+		 * 根据第一个参数小于、等于或大于第二个参数分别返回负整数、零或正整数。
+		 * */
+		return lhs.getName().compareTo(rhs.getName());
+	}
+
+}

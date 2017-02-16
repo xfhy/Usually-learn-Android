@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 22 resources" deleteContents="false" description="Delete 22 resources" element1="/1.数据库的创建" element10="/5.登录案例_sdcard" element11="/5.登录案例_网络版" element12="/5.多线程下载javaSE" element13="/6.listview老虎机" element14="/6.登录案例_sharedpreferences" element15="/6.登录案例_网络版_HttpClient" element16="/6.多线程下载_android" element17="/7.登录案例_网络版_asyncHttpClient" element18="/7.多线程下载xUtils" element19="/8.xml文件的生成与解析" element2="/1.网页源码查看器" element20="/8.新闻案例" element21="/appcompat_v7" element22="/日志猫" element3="/2.数据库的增删改查" element4="/2.图片查看器" element5="/3.其他消息处理方式" element6="/4.登录案例" element7="/4.数据库的事务" element8="/4.文件上传" element9="/5.listview介绍" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="22" stamp="1485148676742"/>
+</session>

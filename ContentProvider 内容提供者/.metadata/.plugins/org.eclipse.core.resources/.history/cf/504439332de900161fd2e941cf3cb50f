@@ -1,0 +1,100 @@
+package com.itheima.smsbackup.utils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import android.content.Context;
+import android.os.Environment;
+import android.util.Xml;
+
+import com.itheima.smsbackup.bean.Sms;
+
+/**
+ * @author XFHY
+ * @date 2017年2月2日 下午5:36:19
+ * @package com.itheima.smsbackup.utils
+ * @function
+ */
+public class SmsUtils {
+
+	/**
+	 * 备份短信
+	 * 
+	 * @param context
+	 * @param allSms
+	 * @return
+	 */
+	public static boolean backupSms(Context context, List<Sms> allSms) {
+
+		FileOutputStream fileOutputStream = null;
+		File file = null;
+		try {
+			//1.准备文件输出流
+			file = new File(Environment.getExternalStorageDirectory()
+					+ "/backup/sms.xml");
+			fileOutputStream = new FileOutputStream(file);
+			
+			//2.得到XmlSerializer对象
+			XmlSerializer xmlSerializer = Xml.newSerializer();
+			//2.1设置XmlSerializer的一些参数，比如：设置xml写入到哪个文件中
+			//os:xml文件写入流   encoding：流的编码
+			xmlSerializer.setOutput(fileOutputStream, "utf-8");
+			
+			//3.序列化一个xml的声明头
+			//encoding:xml文件的编码  standalone:是否独立
+			xmlSerializer.startDocument("utf-8", true);
+			
+			//4.序列化一个根节点的开始节点
+			//namespace:命名空间  name： 标签的名称
+			xmlSerializer.startTag(null, "Smss");
+			
+			//5.循环遍历list集合序列化一条条短信
+
+			for (Sms sms : allSms) {
+				xmlSerializer.startTag(null, "Sms");
+
+				xmlSerializer.startTag(null, "num");
+				//写一个标签的内容
+				xmlSerializer.text(sms.num);
+				xmlSerializer.endTag(null, "num");
+
+
+				xmlSerializer.startTag(null, "msg");
+				xmlSerializer.text(sms.msg);
+				xmlSerializer.endTag(null, "msg");
+
+
+				xmlSerializer.startTag(null, "date");
+				xmlSerializer.text(sms.date);
+				xmlSerializer.endTag(null, "date");
+
+				xmlSerializer.endTag(null, "Sms");
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fileOutputStream != null) {
+				try {
+					fileOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return false;
+	}
+
+}

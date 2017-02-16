@@ -1,0 +1,14 @@
+package com.itheima.wechat;
+
+import android.app.Fragment;
+
+/**
+ * 2017年2月11日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class WxFragment extends Fragment {
+
+}

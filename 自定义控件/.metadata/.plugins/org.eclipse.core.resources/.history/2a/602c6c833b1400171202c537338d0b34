@@ -1,0 +1,69 @@
+package com.xfhy.youkumenu;
+
+import com.xfhy.youkumenu.utils.AnimationUtils;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+import android.os.Build;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private RelativeLayout rl_level1;
+	private RelativeLayout rl_level2;
+	private RelativeLayout rl_level3;
+	private boolean isLevel1Display = true;
+	private boolean isLevel2Display = true;
+	private boolean isLevel3Display = true;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		initView();
+		
+	}
+
+	private void initView() {
+		findViewById(R.id.ib_home).setOnClickListener(this); 
+		findViewById(R.id.ib_menu).setOnClickListener(this); 
+		rl_level1 = (RelativeLayout) findViewById(R.id.rl_level1);
+		rl_level2 = (RelativeLayout) findViewById(R.id.rl_level2);
+		rl_level3 = (RelativeLayout) findViewById(R.id.rl_level3);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.ib_home:
+			if(isLevel2Display) {
+				AnimationUtils.rotateOutAnim(rl_level2,0);   //播放中间层RelativeLayout的动画   转出
+			} else {
+				AnimationUtils.rotateInAnim(rl_level2);   //播放中间层RelativeLayout的动画   转入
+			}
+			isLevel2Display = !isLevel2Display;
+			break;
+		case R.id.ib_menu:
+			if(isLevel3Display) {
+				AnimationUtils.rotateOutAnim(rl_level3,0);   //播放最外层RelativeLayout的动画   转出
+			} else {
+				AnimationUtils.rotateInAnim(rl_level3);   //播放最外层RelativeLayout的动画   转入
+			}
+			isLevel3Display = !isLevel3Display; 
+			break;
+		default:
+			break;
+		}
+	}
+
+}

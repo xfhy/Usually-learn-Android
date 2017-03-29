@@ -1,0 +1,5 @@
+1490790984766	Convert local variable 'viewPager' to field
+1490791385176	Rename local variable 'images'
+1490791415405	Convert local variable 'imageViews' to field
+1490791969463	Rename field 'imageViews'
+1490797049906	Convert local variable 'll_point' to field

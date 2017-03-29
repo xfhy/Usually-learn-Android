@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 10 resources" deleteContents="false" description="Delete 10 resources" element1="/1.服务入门" element10="/9.本地服务" element2="/10.支付宝" element3="/11.欢乐斗地主买豆" element4="/2.电话监听器" element5="/3.使用服务注册特殊的广播接收者" element6="/5.为什么要引入bindservice" element7="/6.通过接口调用服务里面的方法" element8="/7.百度音乐盒" element9="/8.远程服务" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="10" stamp="1490750980342"/>
+</session>

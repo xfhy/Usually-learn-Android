@@ -1,0 +1,5 @@
+1490874733624	Convert local variable 'tv_switch' to field
+1490875527714	Convert local variable 'switchBackgroundBitmap' to field
+1490875594115	Convert local variable 'mSlideButtonBitmap' to field
+1490875853104	Convert local variable 'paint' to field
+1490880916569	Rename local variable 'newX'

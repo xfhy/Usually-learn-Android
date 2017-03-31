@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="ToggleView">
+        <!--fornat属性用来指定属性的类型
+	      dimension表示大小
+	      reference引用属性
+	      color是颜色
+	      -->
+	      
+    </declare-styleable>
+    
+</resources>

@@ -1,0 +1,108 @@
+package com.xfhy.popupwindow;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.os.Build;
+
+public class MainActivity extends Activity implements OnClickListener {
+
+	private ImageButton ib_dropdown;
+	private ListView listView;
+	private EditText et_input;
+	private List<String> datas;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		ib_dropdown = (ImageButton) findViewById(R.id.ib_dropdown);
+		et_input = (EditText) findViewById(R.id.et_input);
+		ib_dropdown.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.ib_dropdown:
+			showPopupWindow();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 显示下拉选择框
+	 */
+	private void showPopupWindow() {
+		
+		initListView();   //初始化列表
+		
+		PopupWindow popupWindow = new PopupWindow(listView, et_input.getWidth(), 300);   //将下拉列表显示在listView上  宽 ,高
+		popupWindow.showAsDropDown(et_input, 0,-5);
+	}
+
+	/**
+	 * 初始化列表
+	 */
+	private void initListView() {
+		listView = new ListView(this);
+		datas = new ArrayList<>();
+		for (int i = 0; i < 30; i++) {
+			datas.add((1000+i)+"");
+		}
+		listView.setAdapter(new MyAdapter());
+	}
+
+	class MyAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			return datas != null ? datas.size() : 0;   //判断是否为空
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return datas.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View view;
+			if(convertView == null) {
+				view = View.inflate(parent.getContext(),R.layout.item_number , parent);
+			} else {
+				view = convertView;
+			}
+			TextView tv_number = (TextView) view.findViewById(R.id.tv_number);
+			tv_number.setText(datas.get(position));
+			return view;
+		}
+		
+	}
+	
+}

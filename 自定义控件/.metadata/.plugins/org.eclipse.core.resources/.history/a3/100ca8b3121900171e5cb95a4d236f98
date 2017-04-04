@@ -1,0 +1,218 @@
+package com.xfhy.sliding.ui;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Scroller;
+
+/**
+ * @author xfhy
+ * @date 2017年4月4日 上午10:52:51
+ * @package com.xfhy.sliding.ui
+ * @function 自定义的布局 左边是滑动菜单(抽屉) 右边是主布局
+ * 
+ *           左边的滑动菜单默认是隐藏的
+ * 
+ *           测量 摆放 绘制 measure -> layout -> draw | | | onMeasure -> onLayout ->
+ *           onDraw 重写这些方法, 实现自定义控件
+ * 
+ *           都在onResume()之后执行
+ * 
+ *           View流程 onMeasure() (在这个方法里指定自己的宽高) -> onDraw() (绘制自己的内容)
+ * 
+ *           ViewGroup流程 onMeasure() (指定自己的宽高, 所有子View的宽高)-> onLayout()
+ *           (摆放所有子View) -> onDraw() (绘制内容)
+ * 
+ * 
+ */
+public class SlideMenu extends ViewGroup {
+
+	public static final int MAIN_STATE = 1000;
+	public static final int MENU_STATE = 1001;
+	private float downX;
+	private float moveX;
+	private int leftMenuWidth;
+	private int currentState = MAIN_STATE;   //当前侧滑菜单的状态   
+	private Scroller mScroller;
+
+	public SlideMenu(Context context) {
+		super(context);
+		init();
+	}
+
+	public SlideMenu(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		init();
+	}
+
+	public SlideMenu(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		init();
+	}
+
+	/**
+	 * 初始化
+	 */
+	private void init() {
+		 mScroller = new Scroller(getContext());
+	}
+
+	/**
+	 * 测量并设置所有子View的宽高 widthMeasureSpec:当前控件的宽度测量规则
+	 * heightMeasureSpec:当前控件的高度测量规则
+	 */
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+		// 设置左边滑动菜单的宽度和高度
+		View leftMenu = getChildAt(0);
+		leftMenu.measure(leftMenu.getLayoutParams().width, heightMeasureSpec); // 宽度就是滑动菜单自己的宽度
+
+		// 设置主布局的宽度和高度
+		View mainContent = getChildAt(1);
+		mainContent.measure(widthMeasureSpec, heightMeasureSpec); // 宽高是和该控件的宽高一致
+
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+
+	/**
+	 * 控制子View的摆放 changed: l: left 左边距 t: top 顶部边距 r: right 右边距 b: buttom 底部边距
+	 */
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		// 左边菜单
+		View leftMenu = getChildAt(0);
+		leftMenuWidth = leftMenu.getMeasuredWidth();
+		leftMenu.layout(-leftMenuWidth, 0, 0, b); // 左边菜单应该放在左边看不见的地方,然后宽度是
+													// -自身宽度
+
+		// 主布局
+		getChildAt(1).layout(l, t, r, b);
+
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			downX = event.getX(); // 滑动时的初始降落点
+			break;
+		case MotionEvent.ACTION_MOVE:
+			moveX = event.getX(); // 移动时的滑到的那个位置
+
+			int scrollX = (int) (downX - moveX); // 滑动的距离 将要发生的偏移量/变化量
+
+			// 计算将要滑动到的位置
+			int offset = getScrollX() + scrollX; // 总共滑行的距离+将要滑行的距离 判断是否超过边界
+
+			if (offset < -leftMenuWidth) { // 限制左边界
+				scrollTo(-leftMenuWidth, 0);
+			} else if (offset > 0) { // 限制右边界
+				scrollTo(0, 0);
+			} else { // 正常范围内
+				scrollBy(scrollX, 0); // 在原来的基础上滚动
+			}
+
+			downX = moveX; // 初始降落点改为现在的位置
+
+			break;
+		case MotionEvent.ACTION_UP:
+
+			// 侧滑菜单中间位置
+			int centerLeftMenu = (int) (-leftMenuWidth / 2.0f);   //这个中点位置是负的
+			if (getScrollX() < centerLeftMenu) { // 说明滑动的距离大于侧滑菜单的一半
+				currentState = MENU_STATE; // 应该打开菜单
+				updateCurrentContent();
+			} else {
+				currentState = MAIN_STATE; // 应该关闭菜单
+				updateCurrentContent();
+			}
+
+			break;
+		default:
+			break;
+		}
+
+		return true; // 这是完全自定义的,所以需要返回true 消费了事件
+	}
+
+	/**
+	 * 根据当前的状态 执行 打开/关闭 的动画
+	 * 
+	 * 现在需要一个平滑的动画 
+	 * Android中已经提供了这样一个库,Scroller 
+	 */
+	private void updateCurrentContent() {
+		int startX = getScrollX();   //开始的X值,就是已经滑行的距离(往左)   这个值是负数,如果往右滑(侧滑菜单出现)
+		int dx = 0;
+		if (currentState == MENU_STATE) {
+			//打开菜单
+			dx = -leftMenuWidth-startX;
+		} else {
+			//恢复主界面
+			dx = 0-startX;   //把往右滑的,滑回来(界面是从左往右出现)
+		}
+		
+		//1. 开始平滑的数据模拟
+		int duration = Math.abs(dx*3);    //这是动画的执行时间
+		/**
+		 * startX: 开始的X值
+		 * startY: 开始的y值
+		 * dx:将要发生的水平变化量,移动的x距离
+		 * dy:将要发生的垂直变化量,移动的y距离
+		 * duration:数据模拟持续的时长
+		 */
+		mScroller.startScroll(startX, 0, dx, 0, duration);
+		
+		//重点
+		invalidate();  //界面重绘->drawChild()->computeScroll();
+		
+	}
+
+	/**
+	 * 2. 维持动画的持续
+	 */
+	@Override
+	public void computeScroll() {
+		super.computeScroll();
+		if(mScroller.computeScrollOffset()){  //当你想知道新的位置时，请调用这个方法。 如果返回true，则动画尚未完成。
+			//如果是true 表示动画还没结束
+			//获取当前要模拟的数据,也就是要滚动的位置
+			int currX = mScroller.getCurrX();
+			scrollTo(currX, 0);  //滚动到应该去的位置
+			
+			invalidate();  //界面重绘
+		}
+	}
+	
+	/**
+	 * 打开侧滑菜单
+	 */
+	public void open(){
+		currentState = MENU_STATE; // 应该打开菜单
+		updateCurrentContent();
+	}
+	
+	/**
+	 * 关闭侧滑菜单
+	 */
+	public void close() {
+		currentState = MAIN_STATE; // 应该关闭菜单
+		updateCurrentContent();
+	}
+	
+	/**
+	 * 切换侧滑菜单的开关状态
+	 */
+	public void switchState(){
+		if(currentState == MAIN_STATE) {
+			open();
+		} else if(currentState == MENU_STATE){
+			close();
+		}
+	}
+	
+}

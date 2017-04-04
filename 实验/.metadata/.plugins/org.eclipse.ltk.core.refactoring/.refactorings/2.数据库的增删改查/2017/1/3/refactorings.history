@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.itheima.createdatabase&apos; to &apos;com.itheima.crud&apos;&#x0D;&#x0A;- Original project: &apos;2.数据库的增删改查&apos;&#x0D;&#x0A;- Original element: &apos;2.数据库的增删改查/src/com.itheima.createdatabase&apos;&#x0D;&#x0A;- Renamed element: &apos;2.数据库的增删改查/src/com.itheima.crud&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.itheima.createdatabase&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.itheima.createdatabase" name="com.itheima.crud" qualified="false" references="true" stamp="1484469390105" textual="false" version="1.0"/>
+</session>

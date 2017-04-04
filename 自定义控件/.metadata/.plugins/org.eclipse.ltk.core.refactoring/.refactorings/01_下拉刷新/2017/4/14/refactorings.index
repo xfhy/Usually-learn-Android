@@ -1,0 +1,12 @@
+1491181592706	Delete element
+1491197256073	Convert local variable 'moveY' to field
+1491197473277	Convert local variable 'downY' to field
+1491197518463	Convert local variable 'measureHeight' to field
+1491199944806	Rename local variable 'padding'
+1491200184476	Convert local variable 'currentState' to field
+1491208253103	Convert local variable 'rotateUpAnim' to field
+1491208438950	Convert local variable 'mArrowView' to field
+1491208483855	Convert local variable 'mProgressBar' to field
+1491208534701	Convert local variable 'mTitle' to field
+1491208712652	Convert local variable 'rotateDownAnim' to field
+1491210902876	Rename field 'mHeader'

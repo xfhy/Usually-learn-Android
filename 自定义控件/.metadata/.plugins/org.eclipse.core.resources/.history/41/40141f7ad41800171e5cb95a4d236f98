@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <!-- 
+    	侧滑面板里面的菜单的选择器
+    	android:state_pressed="true"  表示点击的时候的背景是@color/bt_bg_pressed
+     -->
+    <item android:state_pressed="true" android:drawable="@color/bt_bg_pressed"></item>
+    <item android:drawable="@android:color/transparent"></item>
+
+</selector>

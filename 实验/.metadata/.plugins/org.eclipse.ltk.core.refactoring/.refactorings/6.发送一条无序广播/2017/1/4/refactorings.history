@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.itheima.sendbrocdcast.MainActivity.onCreate().bt_send&apos; in &apos;com.itheima.sendbrocdcast.MainActivity.onCreate()&apos; to field&#x0D;&#x0A;- Original project: &apos;6.发送一条无序广播&apos;&#x0D;&#x0A;- Original element: &apos;com.itheima.sendbrocdcast.MainActivity.onCreate().bt_send&apos;&#x0D;&#x0A;- Field name: &apos;bt_send&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;bt_send&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.itheima.sendbrocdcast{MainActivity.java" name="bt_send" selection="577 45" stamp="1485390132633" static="false" version="1.0" visibility="2"/>
+</session>

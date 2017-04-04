@@ -1,0 +1,9 @@
+1491285251285	Convert local variable 'downX' to field
+1491285302643	Convert local variable 'moveX' to field
+1491285413687	Convert local variable 'leftMenuWidth' to field
+1491288420470	Convert local variable 'currentState' to field
+1491288438914	Extract constant '_1000'
+1491290720241	Convert local variable 'scroller' to field
+1491290735184	Rename field 'scroller'
+1491295110300	Convert local variable 'sm' to field
+1491295193103	Convert local variable 'backButton' to field

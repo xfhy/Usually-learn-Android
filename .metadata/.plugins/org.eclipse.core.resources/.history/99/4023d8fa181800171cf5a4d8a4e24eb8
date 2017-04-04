@@ -1,0 +1,16 @@
+package com.xfhy.dialogfragment;
+
+import android.app.DialogFragment;
+
+/**
+ * 2017年4月3日
+ * 
+ * xfhy
+ * 
+ * 自定义对话框
+ */
+public class EditNameDialogFragment extends DialogFragment {
+
+	
+
+}

@@ -1,0 +1,14 @@
+package com.xfhy.javapassdata;
+
+/**
+ * 2017年4月8日
+ * 
+ * xfhy
+ * 
+ * 定义一些JNI的操作
+ */
+public class JNI {
+
+	public native int add(int x,int y);
+	
+}

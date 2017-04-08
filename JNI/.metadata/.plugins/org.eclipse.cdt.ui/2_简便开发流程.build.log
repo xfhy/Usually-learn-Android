@@ -1,0 +1,8 @@
+14:52:29 **** Incremental Build of configuration Default for project 2_简便开发流程 ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" all 
+[armeabi] Compile thumb  : hello <= hello.c
+[armeabi] SharedLibrary  : libhello.so
+[armeabi] Install        : libhello.so => libs/armeabi/libhello.so
+
+14:52:30 Build Finished (took 1s.579ms)
+

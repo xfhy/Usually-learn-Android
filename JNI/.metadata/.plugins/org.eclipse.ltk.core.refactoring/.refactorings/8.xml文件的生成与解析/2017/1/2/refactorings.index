@@ -1,0 +1,7 @@
+1484436786134	Extracts string '备份' into R.string.backup_sms
+1484436862880	Extracts string '恢复' into R.string.restore_sms
+1484437037526	Convert local variable 'backupsms' to field
+1484437040904	Convert local variable 'restoresms' to field
+1484437424889	Move compilation unit
+1484437807984	Rename local variable 'smsBean'
+1484437814905	Rename local variable 'smsBean'

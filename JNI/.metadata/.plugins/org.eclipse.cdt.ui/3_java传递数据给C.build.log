@@ -1,0 +1,6 @@
+16:35:37 **** Incremental Build of configuration Default for project 3_java传递数据给C ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" all 
+[armeabi] Install        : libpassdata.so => libs/armeabi/libpassdata.so
+
+16:35:38 Build Finished (took 435ms)
+

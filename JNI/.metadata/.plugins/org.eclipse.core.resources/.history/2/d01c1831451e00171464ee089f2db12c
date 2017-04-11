@@ -1,0 +1,24 @@
+#include <jni.h>
+#include <android/log.h>
+#define LOG_TAG "xfhy"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+
+JNIEXPORT void JNICALL Java_com_xfhy_jnicfork_MainActivity_cfork(JNIEnv *env,
+		jobject obj) {
+
+	//fork()  有3种可能的返回值<0   ==0   >0
+
+	int pid = fork();
+	if(pid > 0){   //父进程   在父进程中，fork返回新创建子进程的进程ID；
+		//在父进程中执行一些耗时操作会阻塞java中的主线程(UI线程)
+		LOGD("pid == %d ",pid);
+	} else if(pid == 0) {   //子进程   在子进程中，fork返回0；
+		//这是一个新的进程,和java代码没关系,这是新建的进程,不会阻塞主线程
+		while(1){
+			LOGD("我是子进程");
+		}
+		LOGD("pid == 0");
+	} else {  //失败了   如果出现错误，fork返回一个负值；
+		LOGD("pid < 0");
+	}
+}

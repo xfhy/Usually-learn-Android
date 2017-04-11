@@ -1,0 +1,4 @@
+1491715315054	Convert local variable 'et_text' to field
+1491715316910	Convert local variable 'bt_encryption' to field
+1491715319060	Convert local variable 'bt_decrypted' to field
+1491715711432	Rename resource 'encode.cpp'

@@ -1,0 +1,60 @@
+package com.xfhy.encode;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.os.Build;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private EditText et_text;
+	private Button bt_encryption;
+	private Button bt_decrypted;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		et_text = (EditText) findViewById(R.id.et_text);
+		bt_encryption = (Button) findViewById(R.id.bt_encryption);
+		bt_decrypted = (Button) findViewById(R.id.bt_decrypted);
+		bt_encryption.setOnClickListener(this);
+		bt_decrypted.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_encryption:   
+			
+			break;
+		case R.id.bt_decrypted:
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 加密
+	 * @return
+	 */
+	public native String encryption();
+	
+	/**
+	 * 解密
+	 * @return
+	 */
+	public native String decrypted();
+	
+}

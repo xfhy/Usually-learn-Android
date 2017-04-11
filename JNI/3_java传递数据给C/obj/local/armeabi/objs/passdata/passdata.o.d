@@ -21,7 +21,8 @@ obj/local/armeabi/objs/passdata/passdata.o: jni/passdata.c \
  D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/linux/types.h \
  D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/machine/kernel.h \
  D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h \
- D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/memory.h
+ D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/memory.h \
+ D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/android/log.h
 
 D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/jni.h:
 
@@ -68,3 +69,5 @@ D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-
 D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h:
 
 D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/memory.h:
+
+D:/Android-SDK/android-ndk-r9d-windows-x86_64/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/android/log.h:

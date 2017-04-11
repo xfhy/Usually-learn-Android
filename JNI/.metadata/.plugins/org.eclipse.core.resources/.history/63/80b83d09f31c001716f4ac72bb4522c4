@@ -1,0 +1,47 @@
+package com.xfhy.imagexx;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.os.Build;
+
+public class MainActivity extends Activity implements OnClickListener{
+
+	private ImageView image;
+	private Button bt_beautify;
+	private Bitmap bm;
+	private int width;
+	private int height;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		bt_beautify = (Button)findViewById(R.id.bt_beautify);
+		image = (ImageView)findViewById(R.id.image);
+		
+		bt_beautify.setOnClickListener(this);
+		
+		bm = BitmapFactory.decodeResource(getResources(), R.drawable.timg);
+		width = bm.getWidth();   //获取图片的宽度
+		height = bm.getHeight();
+	}
+
+	@Override
+	public void onClick(View v) {
+		
+	}
+
+}

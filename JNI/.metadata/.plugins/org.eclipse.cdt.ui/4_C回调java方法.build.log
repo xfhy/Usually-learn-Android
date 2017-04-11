@@ -1,0 +1,8 @@
+10:30:31 **** Build of configuration Default for project 4_C回调java方法 ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" all 
+[armeabi] Compile thumb  : call_back <= call_back.c
+[armeabi] SharedLibrary  : libcall_back.so
+[armeabi] Install        : libcall_back.so => libs/armeabi/libcall_back.so
+
+10:30:32 Build Finished (took 996ms)
+

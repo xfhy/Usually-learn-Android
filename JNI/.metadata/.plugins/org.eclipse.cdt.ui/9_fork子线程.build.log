@@ -1,0 +1,17 @@
+08:57:46 **** Incremental Build of configuration Default for project 9_fork×ÓÏß³Ì ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" all 
+[armeabi] Compile thumb  : cfork <= cfork.c
+jni/cfork.c: In function 'Java_com_xfhy_jnicfork_MainActivity_cfork':
+jni/cfork.c:31:6: warning: incompatible implicit declaration of built-in function 'execlp' [enabled by default]
+jni/cfork.c:35:6: warning: incompatible implicit declaration of built-in function 'execlp' [enabled by default]
+[armeabi] SharedLibrary  : libcfork.so
+[armeabi] Install        : libcfork.so => libs/armeabi/libcfork.so
+[x86] Compile        : cfork <= cfork.c
+jni/cfork.c: In function 'Java_com_xfhy_jnicfork_MainActivity_cfork':
+jni/cfork.c:31:6: warning: incompatible implicit declaration of built-in function 'execlp' [enabled by default]
+jni/cfork.c:35:6: warning: incompatible implicit declaration of built-in function 'execlp' [enabled by default]
+[x86] SharedLibrary  : libcfork.so
+[x86] Install        : libcfork.so => libs/x86/libcfork.so
+
+08:57:48 Build Finished (took 1s.576ms)
+

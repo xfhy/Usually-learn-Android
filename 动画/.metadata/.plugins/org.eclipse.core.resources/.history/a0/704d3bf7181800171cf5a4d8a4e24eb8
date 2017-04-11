@@ -1,0 +1,16 @@
+package com.xfhy.dialogfragment;
+
+import android.app.DialogFragment;
+
+/**
+ * 2017年4月3日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class EditNameDialogFragment extends DialogFragment {
+
+	
+
+}

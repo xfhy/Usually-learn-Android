@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;9_fork子线程/jni/cfork.cpp&apos; to &apos;cfork.c&apos;" description="Rename resource &apos;cfork.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="jni/cfork.cpp" name="cfork.c" stamp="1491829545948" updateReferences="true"/>
+</session>

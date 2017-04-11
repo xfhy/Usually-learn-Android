@@ -1,0 +1,11 @@
+20:22:59 **** Incremental Build of configuration Default for project 8_CPP¿ª·¢JNI ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" all 
+[armeabi] Compile++ thumb: cpp <= cpp.cpp
+[armeabi] SharedLibrary  : libcpp.so
+[armeabi] Install        : libcpp.so => libs/armeabi/libcpp.so
+[x86] Compile++      : cpp <= cpp.cpp
+[x86] SharedLibrary  : libcpp.so
+[x86] Install        : libcpp.so => libs/x86/libcpp.so
+
+20:23:00 Build Finished (took 1s.660ms)
+

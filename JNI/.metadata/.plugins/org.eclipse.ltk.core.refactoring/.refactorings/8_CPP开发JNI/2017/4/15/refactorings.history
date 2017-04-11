@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.xfhy.cppjni.MainActivity.onCreate().bt_test&apos; in &apos;com.xfhy.cppjni.MainActivity.onCreate()&apos; to field&#x0D;&#x0A;- Original project: &apos;8_CPP开发JNI&apos;&#x0D;&#x0A;- Original element: &apos;com.xfhy.cppjni.MainActivity.onCreate().bt_test&apos;&#x0D;&#x0A;- Field name: &apos;bt_test&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;bt_test&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.xfhy.cppjni{MainActivity.java" name="bt_test" selection="567 45" stamp="1491826367901" static="false" version="1.0" visibility="2"/>
+</session>

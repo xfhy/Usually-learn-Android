@@ -1,0 +1,25 @@
+import java.lang.reflect.Method;
+
+
+/**
+ * 2017年4月8日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class Demo {
+
+	public static void main(String[] args) {
+		
+		//
+		Class util = Utils.class;
+		try {
+			Method method = util.getMethod("test", String.class);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

@@ -1,0 +1,7 @@
+14:46:51 **** Clean-only build of configuration Default for project 5_文字加密解密处理 ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" clean 
+[armeabi] Clean          : encode [armeabi]
+[armeabi] Clean          : stdc++ [armeabi]
+
+14:46:52 Build Finished (took 558ms)
+

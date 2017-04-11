@@ -1,0 +1,44 @@
+#include <jni.h>
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackvoidmethod
+ * Signature: ()V   方法签名
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackvoidmethod
+  (JNIEnv *env, jobject clazz) {
+
+	//1.找到字节码对象
+	//jclass      (*FindClass)(JNIEnv*, const char*);
+	//参数: env,需要反射的对象的全路径
+	jclass claz = (*env)->FindClass(env,"com/xfhy/callbackjava/JNI");
+
+	//2.通过字节码对象找到方法对象
+	//jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+	jmethodID methodID = (*env)->GetMethodID(env,clazz,"callbackvoidmethod","()V");
+
+}
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackintmethod
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackintmethod
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackStringmethod
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackStringmethod
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackShowToast
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackShowToast
+  (JNIEnv *, jobject);

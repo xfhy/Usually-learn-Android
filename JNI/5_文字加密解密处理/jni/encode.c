@@ -1,0 +1,68 @@
+#include <jni.h>
+# include <stdlib.h>
+#include <android/log.h>
+#define LOG_TAG "xfhy"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+
+char* _JString2CStr(JNIEnv* env, jstring jstr) {
+	char* rtn = NULL;
+	jclass clsstring = (*env)->FindClass(env, "java/lang/String");
+	jstring strencode = (*env)->NewStringUTF(env, "GB2312");
+	jmethodID mid = (*env)->GetMethodID(env, clsstring, "getBytes",
+			"(Ljava/lang/String;)[B");
+	jbyteArray barr = (jbyteArray) (*env)->CallObjectMethod(env, jstr, mid,
+			strencode); // String .getByte("GB2312");
+	jsize alen = (*env)->GetArrayLength(env, barr);
+	jbyte* ba = (*env)->GetByteArrayElements(env, barr, JNI_FALSE);
+	if (alen > 0) {
+		rtn = (char*) malloc(alen + 1); //"\0"
+		memcpy(rtn, ba, alen);
+		rtn[alen] = 0;
+	}
+	(*env)->ReleaseByteArrayElements(env, barr, ba, 0);
+	return rtn;
+}
+
+/*
+ * Class:     com_xfhy_encode_MainActivity
+ * Method:    encryption
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_xfhy_encode_MainActivity_encryption(
+		JNIEnv *env, jobject obj, jstring jstr) {
+	//1.将jstring转换成C语言能操作的char*类型
+	char* cstr = _JString2CStr(env, jstr);
+	//2.获取char* 的长度
+	int length = strlen(cstr);
+	LOGD("length = %d ",length);
+	//3.加密算法   即每个字符+6   哈哈,简单加密啦
+	int i;
+	for (i = 0; i < length; i++) {
+		*(cstr + i) += 6;
+		LOGD("*(cstr + i) = %c ",*(cstr + i));
+	}
+
+	//4.将char*转换成jstring返回
+	return (*env)->NewStringUTF(env, cstr);
+}
+
+/*
+ * Class:     com_xfhy_encode_MainActivity
+ * Method:    decrypted
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_xfhy_encode_MainActivity_decrypted(
+		JNIEnv *env, jobject obj, jstring jstr) {
+	//1.将jstring转换成C语言能操作的char*类型
+	char* cstr = _JString2CStr(env, jstr);
+	//2.获取char* 的长度
+	int length = strlen(cstr);
+	//3.加密算法   即每个字符+6   哈哈,简单加密啦
+	int i;
+	for (i = 0; i < length; i++) {
+		*(cstr + i) -= 6;
+	}
+
+	//4.将char*转换成jstring返回
+	return (*env)->NewStringUTF(env, cstr);
+}

@@ -1,0 +1,7 @@
+#include <jni.h>
+#include "com_xfhy_cppjni_MainActivity.h"
+
+JNIEXPORT jstring JNICALL Java_com_xfhy_cppjni_MainActivity_helloFromCpp
+  (JNIEnv *env, jobject obj){
+	return env->NewStringUTF("Hello from C++!");
+}

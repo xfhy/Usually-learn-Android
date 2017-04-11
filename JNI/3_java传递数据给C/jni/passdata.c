@@ -1,5 +1,14 @@
 #include <jni.h>
 #include <stdlib.h>
+#include <android/log.h>
+#define LOG_TAG "xfhy"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+
+//define是起别名
+//LOG_TAG就是tag
+//ANDROID_LOG_DEBUG表示优先级     debug      ANDROID_LOG_INFO表示info 这些在log.h中可以看到
+//__VA_ARGS__:是可变参数的固定写法
 
 
 /**
@@ -41,6 +50,7 @@ JNIEXPORT jstring JNICALL Java_com_xfhy_javapassdata_JNI_sayHelloInC
 	char* cstr = _JString2CStr(env,str);
     //调用C语言的strlen测量cstr字符串的长度
 	int length = strlen(cstr);
+	LOGD("length = %d",length);
 	int i=0;
 	for(i=0; i<length; i++){
 		*(cstr+i) += 1;   //将字符串+1
@@ -55,4 +65,15 @@ JNIEXPORT jstring JNICALL Java_com_xfhy_javapassdata_JNI_sayHelloInC
  * Signature: ([I)[I
  */
 JNIEXPORT jintArray JNICALL Java_com_xfhy_javapassdata_JNI_arrElementsIncrease
-  (JNIEnv *, jobject, jintArray);
+  (JNIEnv *env, jobject clazz, jintArray jArray) {
+	//jsize       (*GetArrayLength)(JNIEnv*, jarray);    返回数组长度
+	int length = (*env)->GetArrayLength(env,jArray);
+	//jint*       (*GetIntArrayElements)(JNIEnv*, jintArray, jboolean*);   最后一个参数表示是否拷贝,可以不用传值
+	//返回int* 返回该数组的首地址    这样就可以直接通过该指针直接操作该数组了
+	int* cArray = (*env)->GetIntArrayElements(env,jArray,NULL);
+	int i;
+	for(i=0; i<length; i++) {
+		*(cArray+i) += 10;
+	}
+	return jArray;   //直接将原数组返回(这时已经是修改过了的)
+}

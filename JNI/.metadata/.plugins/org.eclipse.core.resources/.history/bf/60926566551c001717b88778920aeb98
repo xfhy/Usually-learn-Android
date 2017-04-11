@@ -1,0 +1,8 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := call_back
+LOCAL_SRC_FILES := call_back.cpp
+
+include $(BUILD_SHARED_LIBRARY)

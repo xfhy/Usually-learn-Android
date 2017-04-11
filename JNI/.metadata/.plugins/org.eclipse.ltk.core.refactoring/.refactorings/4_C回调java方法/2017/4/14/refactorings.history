@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;4_C回调java方法/jni/call_back.cpp&apos; to &apos;call_back.c&apos;" description="Rename resource &apos;call_back.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="jni/call_back.cpp" name="call_back.c" stamp="1491653873974" updateReferences="true"/>
+</session>

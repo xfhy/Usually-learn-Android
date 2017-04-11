@@ -1,0 +1,58 @@
+package com.xfhy.pressuredemo.view;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.View;
+
+/**
+ * 2017年4月10日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class MyView extends View {
+
+	private Paint paint;
+	
+	/**
+	 * @param context
+	 * @param attrs
+	 * @param defStyleAttr
+	 */
+	public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
+		init();
+	}
+
+	/**
+	 * @param context
+	 * @param attrs
+	 */
+	public MyView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		init();
+	}
+
+	/**
+	 * @param context
+	 */
+	public MyView(Context context) {
+		super(context);
+		init();
+	}
+
+	private void init(){
+		paint = new Paint();
+		paint.setTextSize(20);
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		
+	}
+	
+}

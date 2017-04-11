@@ -1,0 +1,7 @@
+1491187352483	Delete element
+1491188556630	Convert local variable 'bt_edit_name' to field
+1491192973810	Convert local variable 'bt_login' to field
+1491193366948	Convert local variable 'et_txt_username' to field
+1491193369345	Convert local variable 'et_txt_password' to field
+1491193471204	Rename field 'et_txt_username'
+1491193480835	Rename field 'et_txt_password'

@@ -1,0 +1,45 @@
+package com.xfhy.pressuredemo.view;
+
+import android.content.Context;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.View;
+
+/**
+ * 2017年4月10日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class MyView extends View {
+
+	private Paint paint;
+	
+	/**
+	 * @param context
+	 * @param attrs
+	 * @param defStyleAttr
+	 */
+	public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
+	}
+
+	/**
+	 * @param context
+	 * @param attrs
+	 */
+	public MyView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+
+	/**
+	 * @param context
+	 */
+	public MyView(Context context) {
+		super(context);
+	}
+
+	
+	
+}

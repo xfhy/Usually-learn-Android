@@ -1,0 +1,3 @@
+1484902970197	Extracts string '上传' into R.string.upload
+1484903347507	Convert local variable 'et_filepath' to field
+1484903350023	Convert local variable 'bt_upload' to field

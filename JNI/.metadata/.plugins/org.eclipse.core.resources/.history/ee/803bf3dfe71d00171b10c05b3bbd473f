@@ -1,0 +1,6 @@
+#include <jni.h>
+
+JNIEXPORT jstring JNICALL Java_com_xfhy_cppjni_MainActivity_helloFromCpp
+  (JNIEnv *env, jobject obj){
+
+}

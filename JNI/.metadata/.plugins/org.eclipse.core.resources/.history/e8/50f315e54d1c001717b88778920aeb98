@@ -1,0 +1,26 @@
+
+/**
+ * 2017年4月8日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class Demo {
+
+	public static void main(String[] args) {
+		
+		//
+		Class util = Utils.class;
+		try {
+			util.getMethod("test", String.class);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}

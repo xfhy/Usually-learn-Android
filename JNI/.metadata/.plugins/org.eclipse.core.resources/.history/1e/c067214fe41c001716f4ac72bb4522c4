@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    tools:context="com.xfhy.encode.MainActivity$PlaceholderFragment" >
+
+    <EditText
+        android:id="@+id/et_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt_encryption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加密" />
+    
+    <Button
+        android:id="@+id/bt_Decrypted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解密" />
+
+</LinearLayout>

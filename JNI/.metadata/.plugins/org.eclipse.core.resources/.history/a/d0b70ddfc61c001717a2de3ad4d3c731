@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    tools:context="com.xfhy.callbackjava.MainActivity$PlaceholderFragment" >
+
+    <Button
+        android:id="@+id/bt_callbackvoid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回调空方法" />
+
+    <Button
+        android:id="@+id/bt_callbackint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回调int参数方法" />
+    
+    
+</LinearLayout>

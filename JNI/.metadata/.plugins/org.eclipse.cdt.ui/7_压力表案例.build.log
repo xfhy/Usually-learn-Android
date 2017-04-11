@@ -1,0 +1,9 @@
+20:16:55 **** Clean-only build of configuration Default for project 7_Ñ¹Á¦±í°¸Àý ****
+"D:\\Android-SDK\\android-ndk-r9d-windows-x86_64\\android-ndk-r9d\\ndk-build.cmd" clean 
+[armeabi] Clean          : pressure [armeabi]
+[armeabi] Clean          : stdc++ [armeabi]
+[x86] Clean          : pressure [x86]
+[x86] Clean          : stdc++ [x86]
+
+20:16:56 Build Finished (took 874ms)
+

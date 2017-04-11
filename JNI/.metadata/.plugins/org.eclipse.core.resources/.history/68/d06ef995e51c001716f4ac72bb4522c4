@@ -1,0 +1,17 @@
+#include <jni.h>
+
+/*
+ * Class:     com_xfhy_encode_MainActivity
+ * Method:    encryption
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_xfhy_encode_MainActivity_encryption
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     com_xfhy_encode_MainActivity
+ * Method:    decrypted
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_xfhy_encode_MainActivity_decrypted
+  (JNIEnv *, jobject, jstring);

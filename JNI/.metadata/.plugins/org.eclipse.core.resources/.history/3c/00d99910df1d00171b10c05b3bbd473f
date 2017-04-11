@@ -1,0 +1,26 @@
+#include <jni.h>
+#include<stdlib.h>
+
+int getPressure()
+{
+	return rand%100;
+}
+
+/*
+ * Class:     com_xfhy_pressuredemo_MainActivity
+ * Method:    startPressure   开始检测
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_pressuredemo_MainActivity_startPressure
+  (JNIEnv *env, jobject obj){
+	//jclass      (*FindClass)(JNIEnv*, const char*);
+	jclass mainClass = (*env)->FindClass(env,"com/xfhy/pressuredemo/MainActivity");
+}
+
+/*
+ * Class:     com_xfhy_pressuredemo_MainActivity
+ * Method:    stopPressure   停止检测
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_pressuredemo_MainActivity_stopPressure
+  (JNIEnv *, jobject);

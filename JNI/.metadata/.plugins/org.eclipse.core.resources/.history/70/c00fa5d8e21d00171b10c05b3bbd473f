@@ -1,0 +1,14 @@
+package com.xfhy.pressuredemo.view;
+
+import android.view.View;
+
+/**
+ * 2017年4月10日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class MyView extends View {
+
+}

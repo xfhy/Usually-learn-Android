@@ -1,0 +1,27 @@
+import java.lang.reflect.Method;
+
+
+/**
+ * 2017年4月8日
+ * 
+ * xfhy
+ * 
+ * TODO
+ */
+public class Demo {
+
+	public static void main(String[] args) {
+		
+		//1.获取字节码对象
+		Class util = Utils.class;
+		try {
+			//2.获取Method对象
+			Method method = util.getMethod("test", String.class);
+			Object obj = util.newInstance();
+			method.invoke(obj, "hello");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

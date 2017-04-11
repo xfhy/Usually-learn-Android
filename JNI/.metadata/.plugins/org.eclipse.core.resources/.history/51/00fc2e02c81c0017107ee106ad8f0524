@@ -1,0 +1,90 @@
+#include <jni.h>
+#include <android/log.h>
+#define LOG_TAG "xfhy"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI     java里的类的完整路径
+ * Method:    callbackvoidmethod     java里面的方法名
+ * Signature: ()V   方法签名
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackvoidmethod(
+		JNIEnv *env, jobject clazz) {
+
+	//1.找到字节码对象
+	//jclass      (*FindClass)(JNIEnv*, const char*);
+	//参数: env,需要反射的对象的全路径
+	jclass claz = (*env)->FindClass(env, "com/xfhy/callbackjava/JNI");
+
+	//2.通过字节码对象找到方法对象
+	//jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+	//第二个参数 字节码对象 第三个参数 要反射调用的java方法名 第四个参数 要反射调用的java方法签名
+	//javap -s 要获取方法签名的类的全类名 项目/bin/classes 运行javap
+	jmethodID methodID = (*env)->GetMethodID(env, claz, "helloFromJava", "()V");
+
+	//3.通过字节码创建java对象(可选),如果本地方法和要调用的java方法在同一个类里,可以直接用jni传过来的java对象,调用创建的Method
+	//jobject obj =(*env)->AllocObject(env,claz);
+	//* 当回调的方法跟本地方法不在一个类里 需要通过刚创建的字节码对象手动创建一个java对象
+	//* 再通过这个对象来回调java的方法
+	//* 需要注意的是, 如果创建的是一个activity对象, 回调的方法还包含上下文 ,这个方法行不通!!!回报空指针异常
+
+	//4.反射调用java方法
+	//void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+	//第二个参数 调用java方法的对象 第三个参数 要调用的jmethodID对象 可选的参数 调用方法时接收的参数
+	(*env)->CallVoidMethod(env, clazz, methodID);
+}
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackintmethod
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackintmethod(
+		JNIEnv *env, jobject clazz) {
+
+	//1.找到字节码对象
+	//jclass      (*FindClass)(JNIEnv*, const char*);
+	//参数: env,需要反射的对象的全路径
+	jclass claz = (*env)->FindClass(env, "com/xfhy/callbackjava/JNI");
+
+	//2.通过字节码对象找到方法对象
+	//jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+	//第二个参数 字节码对象 第三个参数 要反射调用的java方法名 第四个参数 要反射调用的java方法签名
+	//javap -s 要获取方法签名的类的全类名 项目/bin/classes 运行javap
+	jmethodID methodID = (*env)->GetMethodID(env, claz, "add", "(II)I");
+
+	//3.通过字节码创建java对象(可选),如果本地方法和要调用的java方法在同一个类里,可以直接用jni传过来的java对象,调用创建的Method
+	//jobject obj =(*env)->AllocObject(env,claz);
+	//* 当回调的方法跟本地方法不在一个类里 需要通过刚创建的字节码对象手动创建一个java对象
+	//* 再通过这个对象来回调java的方法
+	//* 需要注意的是, 如果创建的是一个activity对象, 回调的方法还包含上下文 ,这个方法行不通!!!回报空指针异常
+
+	//4.反射调用java方法
+	//void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+	//第二个参数 调用java方法的对象 第三个参数 要调用的jmethodID对象 可选的参数 调用方法时接收的参数
+	int result = (*env)->CallIntMethod(env, clazz, methodID, 3, 4);
+	LOGD("result = %d",result);
+}
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackStringmethod
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackStringmethod(
+		JNIEnv *env, jobject clazz) {
+
+	jclass claz = (*env)->FindClass(env,"com/xfhy/callbackjava/JNI");
+	jmethodID methodID = (*env)->GetMethodID(env,claz,"printString","(Ljava/lang/String;)V");
+	jstring str = (*env)->NewStringUTF("hello form C!");
+	(*env)->CallVoidMethod(env,clazz,methodID,str);
+
+}
+
+/*
+ * Class:     com_xfhy_callbackjava_JNI
+ * Method:    callbackShowToast
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_callbackjava_JNI_callbackShowToast(
+		JNIEnv *, jobject);

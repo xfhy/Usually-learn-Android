@@ -1,0 +1,37 @@
+#include <jni.h>
+#include<stdlib.h>
+
+int getPressure() {
+	return rand % 100;
+}
+
+int flag = 0;
+
+/*
+ * Class:     com_xfhy_pressuredemo_MainActivity
+ * Method:    startPressure   开始检测    死循环一直回调java的方法,更新UI
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_pressuredemo_MainActivity_startPressure(
+		JNIEnv *env, jobject obj) {
+	flag = 1;
+	while (flag) {   //死循环
+		//jclass      (*FindClass)(JNIEnv*, const char*);
+		jclass mainClass = (*env)->FindClass(env,
+				"com/xfhy/pressuredemo/MainActivity");
+		//jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+		jmethodID methodID = (*env)->GetMethodID(env, mainClass,
+				"setMyProgress", "(I)V");
+		//void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+		(*env)->CallVoidMethod(env, obj, methodID, getPressure());
+	}
+
+}
+
+/*
+ * Class:     com_xfhy_pressuredemo_MainActivity
+ * Method:    stopPressure   停止检测
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_xfhy_pressuredemo_MainActivity_stopPressure(
+		JNIEnv *, jobject);

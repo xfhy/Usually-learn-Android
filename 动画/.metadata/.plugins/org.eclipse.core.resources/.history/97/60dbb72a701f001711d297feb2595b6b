@@ -1,0 +1,78 @@
+package com.xfhy.valueanimatortest;
+
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.os.Build;
+
+public class MainActivity extends Activity {
+
+	private int mScreenHeight = 0;
+	private ImageView ball;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		ball = (ImageView) findViewById(R.id.ball);
+		
+		//获取手机屏幕高度
+		WindowManager windowManager = getWindowManager();
+		Point outSize = new Point();
+		windowManager.getDefaultDisplay().getSize(outSize);
+		mScreenHeight = outSize.y;
+	}
+
+	
+	/**
+	 *  自由落体
+	 * @param view
+	 *  ValueAnimator animator = ValueAnimator.ofFloat(0, mScreenHeight  
+                - mBlueBall.getHeight());  
+        animator.setTarget(mBlueBall);  
+        animator.setDuration(1000).start();  
+//      animator.setInterpolator(value)  
+        animator.addUpdateListener(new AnimatorUpdateListener()  
+        {  
+            @Override  
+            public void onAnimationUpdate(ValueAnimator animation)  
+            {  
+                mBlueBall.setTranslationY((Float) animation.getAnimatedValue());  
+            }  
+        });  
+	 */
+	public void verticalRun(View view) {
+		ValueAnimator animator = ValueAnimator.ofFloat(0,mScreenHeight-ball.getHeight());
+		animator.setTarget(ball);   //设置动画的执行目标
+		animator.setDuration(1000).start();    //设置开始执行动画
+		animator.addUpdateListener(new AnimatorUpdateListener() {
+			
+			@Override
+			public void onAnimationUpdate(ValueAnimator animation) {
+				//设置此视图相对于其顶部位置的垂直位置。 除了对象的布局放置之外，这有效地定位了对象后布局。
+				//设置的位置根据animation动画的值来决定
+				ball.setTranslationY((float) animation.getAnimatedValue());
+			}
+		});
+	}
+
+	/**
+	 * 抛物线
+	 * @param view
+	 */
+	public void parabola(View view) {
+
+	}
+
+}

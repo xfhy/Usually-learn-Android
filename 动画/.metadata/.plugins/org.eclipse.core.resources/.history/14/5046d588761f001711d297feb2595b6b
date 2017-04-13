@@ -1,0 +1,48 @@
+package com.xfhy.animatorset;
+
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.graphics.Interpolator;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.os.Build;
+
+public class MainActivity extends Activity {
+
+	private ImageView mBall;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		mBall = (ImageView) findViewById(R.id.id_ball);
+
+	}
+
+	/**
+	 * 多个动画一起执行
+	 * @param view
+	 * 实现X轴和Y轴方向的同时放大到2倍
+	 */
+	public void togetherRun(View view) {
+		                                         //
+		ObjectAnimator anim1 = ObjectAnimator.ofFloat(mBall,"scaleX", 1.0f,2.0f);
+		ObjectAnimator anim2 = ObjectAnimator.ofFloat(mBall, "scaleY", 1.0f,2.0f);
+		AnimatorSet animSet = new AnimatorSet();
+		animSet.setDuration(2000);
+		animSet.setInterpolator(new LinearInterpolator());
+		animSet.playTogether(anim1,anim2);   //多个动画同时执行
+		animSet.start();  //最后记得开始执行动画
+	}
+
+}

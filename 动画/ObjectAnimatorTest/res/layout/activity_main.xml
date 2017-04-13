@@ -14,7 +14,7 @@
         android:layout_height="wrap_content" 
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:onClick="rotateyAnimRun"
+        android:onClick="propertyValuesHolder"
         android:src="@drawable/shuige"/>
 
 </RelativeLayout>

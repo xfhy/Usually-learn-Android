@@ -1,18 +1,12 @@
 package com.xfhy.objectanimatortest;
 
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -24,28 +18,32 @@ public class MainActivity extends Activity {
 		
 	}
 
+	/**
+	 * 多个效果放在一起    然后用ObjectAnimator执行动画
+	 * @param view
+	 */
+	public void propertyValuesHolder(View view)  
+    {  
+		//该类保存有关属性的信息以及该动画中该属性应该占用的值。 
+		//PropertyValuesHolder对象可以用于使用ValueAnimator或ObjectAnimator来创建动画，并在多个不同的属性上进行操作。
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("alpha", 1f,  
+                0f, 1f);    //透明度      从1->0->1
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX", 1f,     //缩放
+                0, 1f);     //X轴缩放比例   
+        PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY", 1f,  
+                0, 1f);  
+        //实现依次执行动画,顺序是pvhX,pvhY,pvhZ
+        ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY,pvhZ).setDuration(1000).start();  
+    }  
+
+	/**
+	 * 多个效果放在一起    然后用ObjectAnimator执行动画
+	 * @param v
+	 */
 	public void rotateyAnimRun(final View v){
 		//ofFloat设置动画作用的元素,作用的属性,动画开始,结束,以及中间的任意值 
 		//rotation:旋转      X轴旋转360°      时间是1000ms
 		//ObjectAnimator.ofFloat(v, "rotationX", 0.0F,360F).setDuration(1000).start();
-		
-		/*
-		 *  ObjectAnimator anim = ObjectAnimator//  
-            .ofFloat(view, "zhy", 1.0F,  0.0F)//  
-            .setDuration(500);//  
-    anim.start();  
-    anim.addUpdateListener(new AnimatorUpdateListener()  
-    {  
-        @Override  
-        public void onAnimationUpdate(ValueAnimator animation)  
-        {  
-            float cVal = (Float) animation.getAnimatedValue();  
-            view.setAlpha(cVal);  
-            view.setScaleX(cVal);  
-            view.setScaleY(cVal);  
-        }  
-    });  
-		 * */
 		
 		ObjectAnimator animator = ObjectAnimator
 				.ofFloat(v, "xfhy", 1.0F,0.0F)

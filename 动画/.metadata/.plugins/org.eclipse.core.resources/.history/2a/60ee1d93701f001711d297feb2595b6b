@@ -1,0 +1,92 @@
+package com.xfhy.valueanimatortest;
+
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.os.Build;
+
+public class MainActivity extends Activity {
+
+	private int mScreenHeight = 0;
+	private ImageView ball;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		ball = (ImageView) findViewById(R.id.ball);
+		
+		//获取手机屏幕高度
+		WindowManager windowManager = getWindowManager();
+		Point outSize = new Point();
+		windowManager.getDefaultDisplay().getSize(outSize);
+		mScreenHeight = outSize.y;
+	}
+
+	
+	/**
+	 *  自由落体
+	 * @param view
+	 * 
+	 */
+	public void verticalRun(View view) {
+		ValueAnimator animator = ValueAnimator.ofFloat(0,mScreenHeight-ball.getHeight());
+		animator.setTarget(ball);   //设置动画的执行目标
+		animator.setDuration(1000).start();    //设置开始执行动画
+		animator.addUpdateListener(new AnimatorUpdateListener() {
+			
+			@Override
+			public void onAnimationUpdate(ValueAnimator animation) {
+				//设置此视图相对于其顶部位置的垂直位置。 除了对象的布局放置之外，这有效地定位了对象后布局。
+				//设置的位置根据animation动画的值来决定
+				ball.setTranslationY((float) animation.getAnimatedValue());
+			}
+		});
+	}
+
+	/**
+	 * 抛物线
+	 * @param view
+	 * 
+	 * 如果我希望小球抛物线运动【实现抛物线的效果，水平方向100px/s，垂直方向加速度200px/s*s 】，
+	 * 分析一下，貌似只和时间有关系，但是根据时间的变化，横向和纵向的移动速率是不同的，
+	 * 我们该咋实现呢？此时就要重写TypeValue的时候了，因为我们在时间变化的同时，
+	 * 需要返回给对象两个值，x当前位置，y当前位置：
+	 * 
+	 * ValueAnimator valueAnimator = new ValueAnimator();  
+        valueAnimator.setDuration(3000);  
+        valueAnimator.setObjectValues(new PointF(0, 0));  
+        valueAnimator.setInterpolator(new LinearInterpolator());  
+        valueAnimator.setEvaluator(new TypeEvaluator<PointF>()  
+        {  
+            // fraction = t / duration  
+            @Override  
+            public PointF evaluate(float fraction, PointF startValue,  
+                    PointF endValue)  
+            {  
+                Log.e(TAG, fraction * 3 + "");  
+                // x方向200px/s ，则y方向0.5 * 10 * t  
+                PointF point = new PointF();  
+                point.x = 200 * fraction * 3;  
+                point.y = 0.5f * 200 * (fraction * 3) * (fraction * 3);  
+                return point;  
+            }  
+        });  
+	 */
+	public void parabola(View view) {
+		ValueAnimator animator = new ValueAnimator();
+		
+	}
+
+}

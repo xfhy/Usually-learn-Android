@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:propertyName="scaleX"
+    android:valueFrom="1.0"
+    android:valueTo="2.0"
+    android:valueType="floatType" >
+
+    <!-- 
+    	属性动画    
+    	 android:duration="1000"        执行时间
+	    android:propertyName="scaleX"   需要改变的属性
+	    android:valueFrom="1.0"         从1.0到2.0
+	    android:valueTo="2.0"
+	    android:valueType="floatType"   属性值的类型
+     -->
+    
+</objectAnimator>

@@ -1,0 +1,120 @@
+package com.xfhy.layoutanimations;
+
+import android.animation.LayoutTransition;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.GridLayout;
+
+public class MainActivity extends Activity implements OnCheckedChangeListener {
+
+	/**
+	 * 这是最外层的LinearLayout
+	 */
+	private ViewGroup viewGroup;
+	private GridLayout mGridLayout;
+	private int mVal;
+	private LayoutTransition mTransition;
+
+	private CheckBox mAppear, mChangeAppear, mDisAppear, mChangeDisAppear;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		viewGroup = (ViewGroup) findViewById(R.id.id_container);
+
+		mAppear = (CheckBox) findViewById(R.id.id_appear);
+		mChangeAppear = (CheckBox) findViewById(R.id.id_change_appear);
+		mDisAppear = (CheckBox) findViewById(R.id.id_disappear);
+		mChangeDisAppear = (CheckBox) findViewById(R.id.id_change_disappear);
+
+		mAppear.setOnCheckedChangeListener(this);
+		mChangeAppear.setOnCheckedChangeListener(this);
+		mDisAppear.setOnCheckedChangeListener(this);
+		mChangeDisAppear.setOnCheckedChangeListener(this);
+
+		// 创建一个GridLayout
+		mGridLayout = new GridLayout(this);
+		// 设置每列5个按钮
+		mGridLayout.setColumnCount(5);
+		// 添加到布局中
+		viewGroup.addView(mGridLayout);
+		// 默认动画全部开启
+		mTransition = new LayoutTransition();
+		mGridLayout.setLayoutTransition(mTransition);
+
+	}
+
+	/**
+	 * 添加按钮
+	 * 
+	 * @param view
+	 */
+	public void addBtn(View view) {
+		// 新建一个Button并添加到GridLayout中,添加到第二个按钮的位置
+		final Button button = new Button(this);
+		button.setText((++mVal) + "");
+		mGridLayout.addView(button, Math.min(1, mGridLayout.getChildCount()));
+		// 给按钮设置点击事件,点击则移除
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mGridLayout.removeView(button);
+			}
+		});
+	}
+
+	/**
+	 * 如果复选框状态发生改变 则重新设置LayoutTransition
+	 */
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		mTransition = new LayoutTransition();   //重新new一个LayoutTransition
+		
+		//当一个View在ViewGroup中出现时，对此View设置的动画
+		mTransition.setAnimator(
+				LayoutTransition.APPEARING,
+				(mAppear.isChecked() ? mTransition
+						.getAnimator(LayoutTransition.APPEARING) : null));
+		
+		//当一个View在ViewGroup中出现时，对此View对其他View位置造成影响，对其他View设置的动画
+		mTransition
+				.setAnimator(
+						LayoutTransition.CHANGE_APPEARING,
+						(mChangeAppear.isChecked() ? mTransition
+								.getAnimator(LayoutTransition.CHANGE_APPEARING)
+								: null));
+		
+		//当一个View在ViewGroup中消失时，对此View设置的动画
+		mTransition.setAnimator(
+				LayoutTransition.DISAPPEARING,
+				(mDisAppear.isChecked() ? mTransition
+						.getAnimator(LayoutTransition.DISAPPEARING) : null));
+		
+		//当一个View在ViewGroup中消失时，对此View对其他View位置造成影响，对其他View设置的动画
+		mTransition.setAnimator(
+				LayoutTransition.CHANGE_DISAPPEARING,
+				(mChangeDisAppear.isChecked() ? mTransition
+						.getAnimator(LayoutTransition.CHANGE_DISAPPEARING)
+						: null));
+		
+		/*
+		 * 当然了动画支持自定义，还支持设置时间，比如我们修改下，添加的动画为：
+		 * mTransition.setAnimator(LayoutTransition.APPEARING, (mAppear  
+                .isChecked() ? ObjectAnimator.ofFloat(this, "scaleX", 0, 1)  
+                : null));  
+		 * */
+		
+		mGridLayout.setLayoutTransition(mTransition);   //重新设置LayoutTransition
+	}
+
+}

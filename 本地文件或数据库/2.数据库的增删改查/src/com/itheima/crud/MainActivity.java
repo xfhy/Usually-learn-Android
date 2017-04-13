@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-import com.itheima.crud.R;
+import com.xfhy.crud.R;
 import com.itheima.crud.adapter.InfoAdapter;
 import com.itheima.crud.bean.InfoBean;
 import com.itheima.crud.dao.InfoDao;
 
 /**
- * 2017年1月15日13:24:18 数据库创建练习
+ * 2017年4月12日23:00:48 数据库创建练习
  * 
  * @author XFHY
  * 

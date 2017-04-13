@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;mBlueBall&apos; in &apos;com.xfhy.viewanimate.MainActivity&apos; to &apos;mBall&apos;&#x0D;&#x0A;- Original project: &apos;View的animate实现动画&apos;&#x0D;&#x0A;- Original element: &apos;com.xfhy.viewanimate.MainActivity.mBlueBall&apos;&#x0D;&#x0A;- Renamed element: &apos;com.xfhy.viewanimate.MainActivity.mBall&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;mBlueBall&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;com.xfhy.viewanimate{MainActivity.java[MainActivity^mBlueBall" name="mBall" references="true" setter="false" stamp="1492052477127" textual="false" version="1.0"/>
+</session>

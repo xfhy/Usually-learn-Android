@@ -1,0 +1,36 @@
+package com.xfhy.xmlpropertytest;
+
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+
+	private ImageView mBall;
+	private Button mBtStart;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		mBall = (ImageView) findViewById(R.id.ball);
+		mBtStart = (Button) findViewById(R.id.bt_start);
+		
+		
+	}
+
+	public void scaleX(View view)  
+    {  
+        // 加载动画  
+		//使用AnimatorInflater加载动画的资源文件，然后设置目标，就ok~~是不是很简单，这只是单纯横向的放大一倍~
+        Animator anim = AnimatorInflater.loadAnimator(this, R.animator.scalex);  
+        anim.setTarget(mBall);  //目标
+        anim.start();     //开始执行动画
+    }  
+	
+}

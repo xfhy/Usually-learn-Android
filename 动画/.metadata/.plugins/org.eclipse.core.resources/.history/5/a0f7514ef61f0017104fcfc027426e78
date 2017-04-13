@@ -1,0 +1,57 @@
+package com.xfhy.viewanimate;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+
+	protected static final String TAG = "MainActivity";
+
+	private ImageView mBall;
+	private float mScreenHeight;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		DisplayMetrics outMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
+		mScreenHeight = outMetrics.heightPixels;
+		mBall = (ImageView) findViewById(R.id.id_ball);
+
+	}
+
+	public void viewAnim(View view) {
+		mBall.animate()
+		.alpha(0)
+		.y(mScreenHeight/2).setDuration(1000)
+		.withStartAction(new Runnable() {
+			
+			@Override
+			public void run() {
+				Log.d("xfhy", "START");
+			}
+		})
+		.withEndAction(new Runnable() {
+			
+			@Override
+			public void run() {
+				Log.d("xfhy", "END");
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						mBall.setY(0);
+						mBall.setAlpha(1.0f);
+					}
+				});
+			}
+		}).start();
+	}
+
+}

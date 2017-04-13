@@ -2,7 +2,7 @@ package com.itheima.crud.adapter;
 
 import java.util.ArrayList;
 
-import com.itheima.crud.R;
+import com.xfhy.crud.R;
 import com.itheima.crud.bean.InfoBean;
 
 import android.content.Context;

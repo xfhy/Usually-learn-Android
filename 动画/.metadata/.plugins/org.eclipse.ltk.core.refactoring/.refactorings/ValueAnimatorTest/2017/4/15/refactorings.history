@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.xfhy.valueanimatortest.MainActivity.onCreate().ball&apos; in &apos;com.xfhy.valueanimatortest.MainActivity.onCreate()&apos; to field&#x0D;&#x0A;- Original project: &apos;ValueAnimatorTest&apos;&#x0D;&#x0A;- Original element: &apos;com.xfhy.valueanimatortest.MainActivity.onCreate().ball&apos;&#x0D;&#x0A;- Field name: &apos;ball&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;ball&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.xfhy.valueanimatortest{MainActivity.java" name="ball" selection="726 42" stamp="1491994818203" static="false" version="1.0" visibility="2"/>
+</session>
